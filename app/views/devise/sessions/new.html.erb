@@ -1,0 +1,39 @@
+<a href="<%= root_path %>">
+  <%= image_tag "cookgram_logo.png", alt: "Cookgram", class: 'icon' %>
+</a>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+  <div class="form-group">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email', required: true, class: 'text-input' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.password_field :password, autocomplete: "current-password", 
+    required: true, minlength: @minimum_password_length, placeholder: t('activerecord.attributes.user.password'), class: 'text-input' %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="form-group">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me, t('remember_me') %>
+
+      <%= link_to "Forgot your password?", new_password_path(resource_name), class: "float-right" %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit t("login"), class: "btn btn-highlight px-4" %>
+  </div>
+<% end %>
+
+<h4><%= t('or') %></h4>
+
+<div class="log-fb">
+  <span class="mr-2"><%= t('login_with') %></span>
+  <a href="<%= user_facebook_omniauth_authorize_path %>"><i class="fab fa-facebook-square fa-3x"></i></a>
+</div>
+
+<i><%= t('no_account') %> <%= link_to t('signup'), new_registration_path(resource_name) %></i>
+
+<div class="footer"></div>

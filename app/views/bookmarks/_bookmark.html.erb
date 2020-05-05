@@ -1,0 +1,11 @@
+<li id="recipe-bookmark-link-<%= object.id.to_s %>">
+  <% if user_signed_in? && object.is_bookmarked(current_user).present? %>
+    <%= link_to recipe_bookmark_path(object, object.is_bookmarked(current_user)), method: :delete, remote: true do %>
+      <i class="fas fa-bookmark fa-lg"></i>
+    <% end %>
+  <% else %>
+    <%= link_to recipe_bookmarks_path(object), method: :post, remote: true do %>
+      <i class="far fa-bookmark fa-lg"></i>
+    <% end %>
+  <% end %>
+</li>

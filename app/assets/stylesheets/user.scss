@@ -1,0 +1,105 @@
+@import "base";
+
+.registrations, .sessions, .confirmations, .passwords {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url('background_signin.png');
+  // background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  .icon {
+    width: 140px;
+    margin: 15px;
+  }
+  .new_user {
+    margin: 15px;
+    width: 30%;
+  }
+
+  @media only screen and (max-width: 700px){
+    .new_user, h4 {
+      width: 50% !important;
+      // margin: 6px 0;
+    }
+  }
+  
+  @media only screen and (max-width: 500px){
+    .new_user, h4 {
+      width: 80% !important;
+    }
+  }
+  .text-input {
+    padding: 10px;
+    border: 2px solid $base-color;
+    border-radius: $base-border-rounded;
+    width: 100%;
+  }
+
+  .text-input:focus {
+    outline: none;
+  }
+
+  .custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
+    background-color: $base-color;
+  }
+  .custom-control-label {
+    font-style: italic;
+    color: $base-color;
+  }
+
+  .actions {
+    text-align: center;
+  }
+  
+  .btn-highlight {
+    font-size: 18px;
+  }
+
+  h4 { 
+    position: relative;
+    width: 30%;
+    text-transform: uppercase;
+    color: rgb(209, 28, 28);
+    text-align: center;
+
+  }
+
+  h4:before {
+    content: "";
+    border: 1px solid #a19f9f;
+    position: absolute;
+    width: 35%;
+    top: 15px;
+    left: -2px;
+  }
+
+  h4:after {
+    @extend h4:before;
+    right: -2px;
+    left: auto;
+  }
+
+  .log-fb {
+    margin-bottom: 10px;
+    span {
+      color: $base-color;
+      font-size: 20px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    a {
+      vertical-align: middle;
+    }
+  }
+  .footer {
+    position: fixed;
+    background-color: $base-color;
+    height: 10px;
+    width: 100%;
+    bottom: 0;
+  }
+}
+
+

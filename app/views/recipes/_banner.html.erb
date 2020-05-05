@@ -1,0 +1,15 @@
+<div class="banner-area d-flex justify-content-center">
+  <div class="search-area mt-5">
+    <%= form_tag search_recipe_path, method: :get, class: 'form-inline my-2 my-sm-0' do %>
+      <div class="search-input px-3 py-1 d-flex align-items-center">
+        <span class="fas fa-search fa-2x"></span>
+        <%= search_field_tag :search, params[:search], placeholder: t('input_search'), 
+        class: 'form-control ml-2 border-0 flex-grow-1' %>
+      </div>
+      <%= submit_tag t('search'), name: nil, class: 'btn btn-positive rounded-15 my-0 ml-sm-2' %>
+    <% end %>
+    <div class="keyword-bar mt-2 ml-4">
+      <p>Banh Mi | Pho | Ga </p>
+    </div>
+  </div>
+</div>

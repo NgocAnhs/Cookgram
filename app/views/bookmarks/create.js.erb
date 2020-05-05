@@ -1,0 +1,4 @@
+$("#recipe-bookmark-link-<%= @recipe.id.to_s %>").
+  html('<%= j render "bookmarks/bookmark", object: @recipe %>');
+
+console.log('create bookmark recipe');

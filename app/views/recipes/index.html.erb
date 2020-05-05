@@ -1,0 +1,8 @@
+<%= render 'recipes/banner' %>
+
+<div class="box d-flex flex-wrap justify-content-between m-5">
+<% @latest_recipes.each do |recipe| %>
+  <%= render 'recipes/box_item', recipe: recipe %>
+<% end %>
+</div>
+

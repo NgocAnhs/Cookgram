@@ -1,0 +1,30 @@
+<% fb_share_url = "https://www.facebook.com/sharer/sharer.php?app_id="+ENV['FACEBOOK_APP_ID']+"&sdk=joey&u=" %>
+
+<div class="box-item">
+  <div class="box-img">
+  <%= image_tag recipe.image %>
+  </div>
+  <ul class="action-list">
+    <li id="recipe-preview">
+      <%= link_to root_path do %>
+        <i class="far fa-eye fa-lg"></i>
+      <% end %>
+    </li>
+    <%= render "likes/recipe/like_link", object: recipe %>
+    <%= render "bookmarks/bookmark", object: recipe %>
+    <li id="recipe-share">
+      <a href="<%= fb_share_url + recipe_url(recipe) %>" onclick="return !window.open(this.href, 'Facebook', 'width=640,height=580')"><i class="fas fa-share-alt fa-lg"></i></a>
+    </li>
+  </ul>
+  <div class="box-body">
+    <%= link_to recipe.title, recipe_path(recipe), class: "box-title" %>
+    <div class="user">
+      <a href="<%= root_path %>"><i class="fas fa-user"></i>  <%= recipe.user.full_name %></a>
+    </div>
+    <div class="interactive">
+      <%= render "likes/recipe/like_count", object: recipe %>
+      <span id="comment-count"><i class="fas fa-comments"></i> 10</span>
+    </div>
+  </div>
+</div>
+

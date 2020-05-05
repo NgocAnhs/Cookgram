@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-md navbar-light sticky-top">
+  <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <a class="navbar-brand" href="<%= root_path %>">
+    <%= image_tag "cookgram_logo.png", alt: "Cookgram", class: "nav-icon d-inline-block align-top" %>
+  </a>
+  
+  <div class="nav-search d-none">
+    <%= form_tag search_recipe_path, method: :get, class: 'form-inline my-2 my-sm-0' do %>
+    <div class="search-input px-1 d-flex align-items-center" >
+      <%= search_field_tag :search, params[:search], placeholder: t('input_search'), 
+      class: 'form-control ml-2 border-0 flex-grow-1' %>
+      <%= button_tag(type: "submit", class: "btn") do %>
+        <i class="fas fa-search fa-2x"></i>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+
+  <p>
+    <%= link_to_unless I18n.locale == :en, "English", locale: :en %>
+    |
+    <%= link_to_unless I18n.locale == :vn, "VietNam", locale: :vn %>
+    </p>
+  <div class="collapse navbar-collapse" id="collapse_target">
+    <ul class="navbar-nav ml-auto">
+      <!-- Check loged in to render navbar -->
+      <% if user_signed_in? %>
+      <li class="nav-item mr-3 my-auto">
+        <%= link_to @current_user, class: "btn-icon" do %>
+          <i class="fas fa-user fa-lg"></i>
+        <% end %>
+      </li>
+
+      <li class="nav-item my-auto">
+        <%= link_to "Tạo công thức mới", new_recipe_path, class: "btn btn-highlight" %>
+      </li>
+      <div class="vertical-line mx-3"></div>
+      <li class="nav-item my-auto mr-3">
+        <%= link_to root_path, class: "btn-icon" do %>
+          <i class="fas fa-bell fa-lg"></i>
+        <% end %>
+      </li>
+      <li class="nav-item my-auto">
+        <%= link_to destroy_user_session_path, method: :delete, class: "btn-icon" do %>
+          <i class="fas fa-sign-out-alt fa-lg"></i>
+        <% end %>
+      </li>
+      <% else %>
+      <li class="nav-item pr-3">
+        <%= link_to t('login'), new_user_session_path, class: "btn btn-positive" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('signup'), new_user_registration_path, class: "btn btn-negative my-0" %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

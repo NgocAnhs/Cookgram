@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cookgram</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= content_for?(:title) ? yield(:title) : "Cookgram" %></title>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="<%= controller_name %> <%= action_name %>">
+    <% devise_controller = ['registrations', 'sessions', 'confirmations', 'passwords']  %>
+    <% unless devise_controller.include? controller_name   %>
+      <%= render 'layouts/navbar' %>
+    <% end %>
+    <%= yield %>
+    <%= toastr_flash %>
+    <% unless devise_controller.include? controller_name   %>
+      <%= render 'layouts/footer' %>
+    <% end %>
+  </body>
+</html>

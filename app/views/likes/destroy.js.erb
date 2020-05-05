@@ -1,0 +1,6 @@
+$("#<%= @type %>-like-link-<%= @subject.id.to_s %>").
+  html('<%= j render "likes/#{@type}/like_link", object: @subject %>');
+$("#<%= @type %>-like-count-<%= @subject.id.to_s %>").
+  html('<%= j render "likes/#{@type}/like_count", object: @subject %>');
+
+console.log('destroy like <%= @type %>');

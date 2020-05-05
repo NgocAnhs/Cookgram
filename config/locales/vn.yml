@@ -1,0 +1,26 @@
+vn:
+  login: "Đăng Nhập"
+  logout: "Đăng Xuất"
+  signup: "Đăng Ký"
+  search: "Tìm thử nhé!"
+  input_search: "Hôm nay bạn muốn ăn gì nè!"
+  policy_confirm: "Tôi đã đọc và đồng ý với điều khoản của website."
+  have_account: "Bạn đã có tài khoản?"
+  no_account: "Bạn chưa có tài khoản?"
+  remember_me: "Lưu đăng nhập"
+  or: "Hoặc"
+  login_with: "Đăng nhập với "
+  controllers:
+    recipes:
+      create_success: "Công thức đã được đăng thành công"
+  activerecord:
+    models:
+      user: "User"
+    attributes:
+      user:
+        fname: "Tên"
+        lname: "Họ"
+        password: "Mật Khẩu"
+        password_confirmation: "Xác nhận mật khẩu"
+        birthday: "Ngày Sinh"
+    
