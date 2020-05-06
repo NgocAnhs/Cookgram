@@ -53,5 +53,6 @@ production:
   adapter: postgresql
   encoding: unicode
   database: Cookgram_production
+  socket: /var/run/postgresql/.s.PGSQL.5432
   username: Cookgram
   password: <%= ENV['COOKGRAM_DATABASE_PASSWORD'] %>
