@@ -49,6 +49,8 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
+  encoding: unicode
   database: Cookgram_production
   username: Cookgram
   password: <%= ENV['COOKGRAM_DATABASE_PASSWORD'] %>
