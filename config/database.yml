@@ -13,6 +13,7 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  
 
 development:
   <<: *default
@@ -51,6 +52,6 @@ production:
   <<: *default
   adapter: postgresql
   encoding: unicode
-  database: <%= ENV['COOKGRAM_DATABASE_URL'] %>
-  # username: Cookgram
-  # password: <%= ENV['COOKGRAM_DATABASE_PASSWORD'] %>
+  database: Cookgram_production
+  username: Cookgram
+  password: <%= ENV['COOKGRAM_DATABASE_PASSWORD'] %>
