@@ -13,13 +13,13 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV['DB_USER'] %>
-  password: <%= ENV['DB_PASS'] %>
-  socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
   database: Cookgram_development
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASS'] %>
+  socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -51,6 +51,6 @@ production:
   <<: *default
   adapter: postgresql
   encoding: unicode
-  database: Cookgram_production
-  username: Cookgram
-  password: <%= ENV['COOKGRAM_DATABASE_PASSWORD'] %>
+  database: <%= ENV['COOKGRAM_DATABASE_URL'] %>
+  # username: Cookgram
+  # password: <%= ENV['COOKGRAM_DATABASE_PASSWORD'] %>
