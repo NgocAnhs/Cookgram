@@ -53,4 +53,5 @@ test:
 #   username: Cookgram
 #   password: <%= ENV['COOKGRAM_DATABASE_PASSWORD'] %>
 production:
-    url: <%= ENV['DATABASE_URL'] %>
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
