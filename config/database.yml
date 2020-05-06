@@ -15,11 +15,11 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: <%= ENV['DB_USER'] %>
   password: <%= ENV['DB_PASS'] %>
+  socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
   database: Cookgram_development
-  socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -54,4 +54,4 @@ test:
 #   password: <%= ENV['COOKGRAM_DATABASE_PASSWORD'] %>
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['CLEARDB_DATABASE_URL'] %>
