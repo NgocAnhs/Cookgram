@@ -1,12 +1,13 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index, :search]
   before_action :set_recipe, only: [:edit, :update, :show, :destroy]
-  before_action :process_image, only: [:create]
+  # before_action :process_image, only: [:create]
 
   def index
-    @latest_recipes = Recipe.all.limit(10).includes(:user).order(created_at: :desc)
+    @pagy_latest, @latest_recipes = pagy(Recipe.all.includes(:user, :likes, :comments).order("created_at desc"), page_param: :page_latest, params: { active_tab: 'lates' })
+    
     if user_signed_in?
-      @our_recipes = current_user.following_and_own_recipes ## temp
+      @pagy_care, @care_recipes = pagy_array(current_user.following_and_own_recipes, page_param: :page_care, params: { active_tab: 'care' }) ## temp
     end
   end
   
@@ -64,8 +65,8 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(
-      :title, :description, :image,
-      ingredients_attributes: [:id, :name, :amount, :unit, :_destroy],
+      :title, :image,
+      ingredients_attributes: [:id, :name, :_destroy],
       steps_attributes: [:id, :content, {step_images: []}, :_destroy])
   end
 
@@ -82,9 +83,8 @@ class RecipesController < ApplicationController
   def process_image
     threads = []
     threads << Thread.new { optimized_image params[:recipe][:image] }
-    c = params[:recipe][:steps_attributes].values.count
-    (0...c).each do |i| 
-      params[:recipe][:steps_attributes]["#{i}"][:step_images]&.each do |img| # character "&" to break when nil
+    params[:recipe][:steps_attributes].each do |step|
+      step[1][:step_images]&.each do |img|
         threads << Thread.new { optimized_image img}
       end
     end

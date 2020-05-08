@@ -9,6 +9,7 @@ vn:
   no_account: "Bạn chưa có tài khoản?"
   remember_me: "Lưu đăng nhập"
   or: "Hoặc"
+  create_recipe: "Tạo công thức mới"
   login_with: "Đăng nhập với "
   controllers:
     recipes:
@@ -23,4 +24,6 @@ vn:
         password: "Mật Khẩu"
         password_confirmation: "Xác nhận mật khẩu"
         birthday: "Ngày Sinh"
+      recipe:
+        title: "Tên món ăn"
     

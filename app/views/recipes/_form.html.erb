@@ -1,0 +1,35 @@
+<%= form_with model: object, local: true do |f| %>
+  <div class="form-input">
+    <div class="form-group mx-5 my-4">
+      <%= render 'layouts/upload_image', {f: f, image: :image, multi: false, max_file: 1} %>
+      <%= f.text_field :title, class: 'form-control base-border-rounded mt-3', placeholder: t('activerecord.attributes.recipe.title') %>
+    </div>
+
+    <h5 style="color: red">Nguyên liệu(*)</h5>
+    <div class="horizontal-line"></div>
+    <div id="ingredients">
+      <%= f.fields_for :ingredients do |ingredient| %>
+        <%= render 'recipes/ingredient_fields', f: ingredient %>
+      <% end %>
+      <div class="links my-2">
+        <%= link_to_add_association '+ Thêm nguyên liệu', f, :ingredients, partial: 'recipes/ingredient_fields' %>
+      </div>
+    </div>
+
+    <h5 style="color: red">Cách làm(*)</h5>
+    <div class="horizontal-line"></div>
+    <div id="steps">
+      <%= f.fields_for :steps do |step| %>
+        <%= render 'recipes/step_fields', f: step %>
+      <% end %>
+      
+      <div class="links my-2">
+        <%= link_to_add_association '+ Thêm bước thực hiện', f, :steps, partial: 'recipes/step_fields' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-action text-center">
+    <%= f.submit "Lên sóng", class: "btn btn-highlight" %>
+  </div>
+<% end %>

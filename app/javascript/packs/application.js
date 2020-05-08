@@ -10,8 +10,13 @@ require("channels")
 
 require("bootstrap");
 require("@fortawesome/fontawesome-free/js/all");
-require("../src/application");
+// require("../src/application");
 require("./custom");
+require("./cocoon");
+// require("dropzone");
+// require('./myDropzone');
+require("../stylesheets/application");
+import "controllers"
 
 const toastr = require('toastr');
 window.toastr = toastr;

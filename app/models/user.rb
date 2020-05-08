@@ -33,13 +33,13 @@ class User < ApplicationRecord
     our_recipes = []
     my_following.each do |f|
       f.recipes.each do |r|
-        following_recipes << r
+        our_recipes << r
       end
     end
     recipes.each do |r|
       our_recipes << r
     end
-    our_recipes
+    our_recipes.reverse
   end
 
   def follow(user)

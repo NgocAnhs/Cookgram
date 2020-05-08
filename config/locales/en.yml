@@ -41,6 +41,7 @@ en:
   no_account: "Don't have an account?"
   remember_me: "Remember me"
   or: "Or"
+  create_recipe: "Create your recipe"
   login_with: "Login with "
   controllers:
     recipes:
@@ -55,4 +56,6 @@ en:
         password: "Password"
         password_confirmation: "Confirm Password"
         birthday: "Date of Birth"
+      recipe:
+        title: "Food's name"
       

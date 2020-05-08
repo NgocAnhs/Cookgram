@@ -1,3 +1,14 @@
-<%= @recipe.title %>
-<%= @recipe.description %>
-<%= image_tag @recipe.image, style: 'width: 300px' %>
+<div class="col-lg-7 col-md-9 col-sm-10 mx-auto">
+  <div class="main-image">
+    <%= image_tag @recipe.image, style: 'width: 90%; max-height: 300px; border: 2px solid green'  %>
+  </div>
+  <h4 class="base-color text-center mt-3"><%= @recipe.title %></h4>
+  <div class="user">
+    <a href="<%= root_path %>"><i class="fas fa-user"></i>  <%= @recipe.user.full_name %></a>
+  </div>
+
+  <div class="ingredient mt-3">
+    <h5>Nguyên liệu:</h5>
+    <div class="horizontal-line"></div>
+  </div>
+</div>

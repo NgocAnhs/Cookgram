@@ -59,6 +59,8 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'mini_magick'
 gem 'friendly_id'
+gem 'cocoon'
+gem 'pagy', '~> 3.8'
 ##
 
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?

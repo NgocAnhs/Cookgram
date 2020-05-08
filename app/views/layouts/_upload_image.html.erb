@@ -1,0 +1,8 @@
+<div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="2"
+  data-dropzone-max-files= '<%= max_file %>'>
+  <%= f.file_field image, multiple: multi, direct_upload: true, data: { target: 'dropzone.input' } %>
+  <div class="dropzone-msg dz-message needsclick text-gray-600">
+    <h4 class="dropzone-msg-title">Nhấn chọn để đăng ảnh</h4>
+    <span class="dropzone-msg-desc text-sm">Dung lượng ảnh phải nhỏ hơn 2MB</span>
+  </div>
+</div>

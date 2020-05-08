@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include Pagy::Frontend
   def toastr_flash
     flash_messages = []
     flash.each do |type, message|

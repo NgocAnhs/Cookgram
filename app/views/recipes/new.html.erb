@@ -1,44 +1,6 @@
-<%= form_with model: @recipe, local: true do |f| %>
-  <div class="form-input">
-    <div class="form-group">
-      <%= f.label :title %>
-      <%= f.text_field :title, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= f.label :description %>
-      <%= f.text_field :description, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= f.label :image %>
-      <%= f.file_field :image %>
-    </div>
-    <%= f.fields_for :ingredients do |ingredient| %>
-      <div class="form-group">
-        <%= f.label :name %>
-        <%= ingredient.text_field :name %>
 
-        <%= f.label :amount %>
-        <%= ingredient.number_field :amount %>
-
-        <%= f.label :unit %>
-        <%= ingredient.text_field :unit %>
-
-        <%= ingredient.check_box :_destroy %>
-      </div>
-    <% end %>
-    <%= f.fields_for :steps do |step| %>
-      <div class="form-group">
-        <%= f.label :content %>
-        <%= step.text_area :content %>
-
-        <%= f.label :step_images %>
-        <%= step.file_field :step_images, multiple: true %>
-
-        <%= step.check_box :_destroy %>
-      </div>
-    <% end %>
+<div class="row my-5">
+  <div class="col-lg-7 col-md-9 col-sm-10 mx-auto">
+    <%= render 'recipes/form', object: @recipe %>
   </div>
-  <div class="form-action">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+</div>

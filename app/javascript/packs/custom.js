@@ -1,6 +1,6 @@
 var changeNavbar = function () {
   if ($(window).scrollTop()) {
-    $('nav').addClass('nav-positive');
+    $('.navbar').addClass('nav-positive');
     $('div.nav-search').removeClass('d-none');
     $('div.search-area').addClass('d-none');
     $('a.btn-icon').css('color','white')
