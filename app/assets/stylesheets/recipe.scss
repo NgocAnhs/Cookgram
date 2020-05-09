@@ -76,3 +76,18 @@
     }  
   }
 }
+
+.standard-img {
+  width: 20%;
+  height: 120px;
+  object-fit: cover;
+  border: 2px solid $base-color;
+  border-radius: $base-border-rounded;
+}
+
+.small-img {
+  width: 30px;
+  height: 30px;
+  border: 1px solid $base-color;
+  border-radius: 50%;
+}

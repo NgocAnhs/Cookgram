@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    # @recipe = @comment.recipe
+    @recipe = @comment.recipe
     if current_user == @comment.user && @comment.destroy
       respond_to :js
     else

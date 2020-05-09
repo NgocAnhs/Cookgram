@@ -1,0 +1,25 @@
+<% recipe.comments.reverse.each do |cmt| %>
+  <div class="d-flex">
+    <div class="small-img">
+      <%= image_tag "cookgram_logo.png", alt: "Cookgram", class: "small-img" %>
+    </div>
+    <div class="ml-2">
+      <strong><%= link_to cmt.user.full_name, user_path(cmt.user) %></strong><br>
+      <span><%= cmt.content %></span><br>
+      <small>
+        <%= time_ago_in_words(cmt.created_at) %> | 
+        <span id="comment-like-count-<%= cmt.id.to_s %>">
+          <%= render "likes/comment/like_count", object: cmt %>
+        </span>
+        <span id="comment-like-link-<%= cmt.id.to_s %>">
+          <%= render "likes/comment/like_link", object: cmt %>
+        </span>
+        <% if current_user == recipe.user %>
+        | <%= link_to "Xóa", comment_path(cmt), method: :delete, 
+          remote: true, data: {confirm: 'Bạn có chắc chắn xóa không?'} %>
+        <% end %>
+      </small>
+    </div>
+  </div>
+  <hr>
+<% end %>

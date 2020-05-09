@@ -10,8 +10,12 @@
         <i class="far fa-eye fa-lg"></i>
       <% end %>
     </li>
-    <%= render "likes/recipe/like_link", object: recipe %>
-    <%= render "bookmarks/bookmark", object: recipe %>
+    <li id="recipe-like-link-<%= recipe.id.to_s %>">
+      <%= render "likes/recipe/like_link", object: recipe %>
+    </li>
+    <li id="recipe-bookmark-link-<%= recipe.id.to_s %>">
+      <%= render "bookmarks/bookmark", object: recipe %>
+    </li>
     <li id="recipe-share">
       <a href="<%= fb_share_url + recipe_url(recipe) %>" onclick="return !window.open(this.href, 'Facebook', 'width=640,height=580')"><i class="fas fa-share-alt fa-lg"></i></a>
     </li>
@@ -22,8 +26,10 @@
       <a href="<%= root_path %>"><i class="fas fa-user"></i>  <%= recipe.user.full_name %></a>
     </div>
     <div class="interactive">
-      <%= render "likes/recipe/like_count", object: recipe %>
-      <span id="comment-count"><i class="fas fa-comments"></i> 10</span>
+      <span id="recipe-like-count-<%= recipe.id.to_s %>">
+        <%= render "likes/recipe/like_count", object: recipe %>
+      </span>
+      <span id="comment-count"><i class="fas fa-comments"></i> <%= recipe.comments.size %></span>
     </div>
   </div>
 </div>

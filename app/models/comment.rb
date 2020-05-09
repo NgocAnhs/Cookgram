@@ -7,4 +7,10 @@ class Comment < ApplicationRecord
 
   ## Validates
   validates :content, presence: true
+  ##
+  ## Function
+  def is_liked(user)
+    Like.find_by(user_id: user.id, comment_id: id)
+  end
+  ##
 end
