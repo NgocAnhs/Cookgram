@@ -1,6 +1,12 @@
 <% fb_share_url = "https://www.facebook.com/sharer/sharer.php?app_id="+ENV['FACEBOOK_APP_ID']+"&sdk=joey&u=" %>
 
 <div class="box-item">
+  <% if current_user == recipe.user %>
+    <%= link_to recipe_path(recipe), class: "setting", method: :delete, 
+        remote: true, data: {confirm: 'Bạn có chắc chắn xóa không?'} do %>
+      <i class="fas fa-times"></i>
+    <% end %>
+  <% end %>
   <div class="box-img">
     <%= image_tag recipe.image %>
   </div>

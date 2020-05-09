@@ -18,7 +18,15 @@
   width: calc(25% - 60px);
   position: relative;
   // border: 2px solid black;
-
+  .setting {
+    position: absolute;
+    top: 3px;
+    left: 91%;
+    width: 20px;
+    height: 20px;
+    color: $base-color;
+  }
+  
   .action-list {
     position: absolute;
     top: 250px;
