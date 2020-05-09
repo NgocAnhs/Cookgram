@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     root to: 'recipes#index'
     devise_for :users, skip: :omniauth_callbacks
     resources :users, only: [:show]
-    resources :recipes, only: [:index, :new, :create, :show] do
+    resources :recipes, only: [:index, :new, :create, :destroy, :show] do
       resources :likes, only: [:create, :destroy]
       resources :bookmarks, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
