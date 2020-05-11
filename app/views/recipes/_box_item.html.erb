@@ -29,7 +29,7 @@
   <div class="box-body">
     <%= link_to recipe.title, recipe_path(recipe), class: "box-title" %>
     <div class="user">
-      <a href="<%= root_path %>"><i class="fas fa-user"></i>  <%= recipe.user.full_name %></a>
+      <a href="<%= user_path(recipe.user) %>"><i class="fas fa-user"></i>  <%= recipe.user.full_name %></a>
     </div>
     <div class="interactive">
       <span id="recipe-like-count-<%= recipe.id.to_s %>">

@@ -102,4 +102,36 @@
   }
 }
 
+#profile-header {
+  .avatar {
+    border: 2px solid $base-color;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top:125px;
+    left: 50px;
+  }
 
+  .info-user {
+    position: absolute;
+    top: 220px;
+    left: 220px;
+    h4 {
+      font-weight: bolder;
+      display: inline-block;
+      font-size: 25px;
+    }
+    #follow, #unfollow {
+      display: inline-block;
+    }
+    
+    a {
+      margin-left: 5px;
+      font-weight: normal !important;
+      font-size: 12px;
+      padding: 5px;
+      vertical-align: text-bottom;
+    }
+
+  }
+}

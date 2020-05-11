@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     root to: 'recipes#index'
-    devise_for :users, skip: :omniauth_callbacks
+    devise_for :users, controllers: { registrations: 'registrations' }, skip: :omniauth_callbacks
     resources :users, only: [:show]
     resources :recipes, only: [:index, :new, :create, :destroy, :show] do
       resources :likes, only: [:create, :destroy]
       resources :bookmarks, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
+    resources :relationships, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy] do
       resources :likes, only: [:create, :destroy]
     end

@@ -29,7 +29,7 @@
       <!-- Check loged in to render navbar -->
       <% if user_signed_in? %>
       <li class="nav-item mr-3 my-auto">
-        <%= link_to @current_user, class: "btn-icon base-color" do %>
+        <%= link_to user_path(current_user), class: "btn-icon base-color" do %>
           <i class="fas fa-user fa-lg"></i>
         <% end %>
       </li>

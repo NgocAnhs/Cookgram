@@ -32,14 +32,14 @@ class User < ApplicationRecord
     my_following = active_relationships
     our_recipes = []
     my_following.each do |f|
-      f.recipes.each do |r|
+      f.followed.recipes&.each do |r|
         our_recipes << r
       end
     end
     recipes.each do |r|
       our_recipes << r
     end
-    our_recipes.reverse
+    our_recipes.sort_by(&:created_at).reverse
   end
 
   def follow(user)
