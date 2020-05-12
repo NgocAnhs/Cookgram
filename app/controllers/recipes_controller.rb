@@ -16,7 +16,7 @@ class RecipesController < ApplicationController
   
   def search
     @parameter = params[:search].downcase
-    @results = Recipe.where("title LIKE ?", "%" + @parameter + "%")
+    @pagy, @results = pagy(Recipe.where("title LIKE ?", "%" + @parameter + "%"))
   end
 
   def new

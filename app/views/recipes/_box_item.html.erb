@@ -35,7 +35,7 @@
       <span id="recipe-like-count-<%= recipe.id.to_s %>">
         <%= render "likes/recipe/like_count", object: recipe %>
       </span>
-      <span id="comment-count"><i class="fas fa-comments"></i> <%= recipe.comments.size %></span>
+      <span id="comment-count"><i class="fas fa-comments"></i>&nbsp;<%= recipe.comments.size %></span>
     </div>
   </div>
 </div>

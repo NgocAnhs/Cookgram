@@ -1,4 +1,13 @@
-<h5>Search result</h5>
-<% @results.each do |result| %>
-  <%= result.title %></br>
+<%= render 'recipes/banner' %>
+
+<% unless @results.empty? %>
+  <h4 class="mt-5 ml-3">Chúng tôi đã tìm thấy <%= @results.size %> công thức cho bạn:</h4>
+  <div class="box d-flex flex-wrap justify-content-between mx-5">
+    <% @results.each do |recipe| %>
+      <%= render 'recipes/box_item', recipe: recipe %>
+    <% end %>
+  </div>
+  <%== pagy_bootstrap_nav (@pagy) if @pagy.pages > 1 %>
+<% else %>
+  <h5 class="text-center my-3">Xin lỗi! Chúng tôi không tìm thấy công thức nào</h5>
 <% end %>

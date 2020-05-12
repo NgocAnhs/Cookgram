@@ -14,6 +14,83 @@
     </div>
   </div>
   <div id="profile-body" style="height: 1100px">
-  
+    <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="myRecipe-tab" data-toggle="tab" href="#myRecipe" role="tab" aria-controls="myRecipe" aria-selected="true">Bếp Của Tôi (<%= @my_recipes.size %>)</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="followers-tab" data-toggle="tab" href="#followers" role="tab" aria-controls="followers" aria-selected="false">Người Theo Dõi (<%= @followers.size %>)</a>
+    </li>
+    <% if current_user == @user %>
+      <li class="nav-item">
+        <a class="nav-link" id="following-tab" data-toggle="tab" href="#following" role="tab" aria-controls="following" aria-selected="false">Người Đang Theo Dõi (<%= @following.size %>)</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" id="bookmarks-tab" data-toggle="tab" href="#bookmarks" role="tab" aria-controls="bookmarks" aria-selected="false">Bookmarks (<%= @bookmarks.size %>)</a>
+      </li>
+    <% end %>
+    <li class="nav-item">
+      <a class="nav-link" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="false">Giới Thiệu</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="myRecipe" role="tabpanel" aria-labelledby="myRecipe-tab">
+      <div class="row mt-4">
+      <% @my_recipes.each.with_index do |recipe, index| %>
+        <%= render 'card', object: recipe %>
+      <% end %>
+      </div>
+      <%== pagy_bootstrap_nav (@pagy_recipes) if @pagy_recipes.pages > 1 %>
+    </div>
+
+    <div class="tab-pane fade" id="followers" role="tabpanel" aria-labelledby="followers-tab">
+      <div class="row mt-4">
+        <% @followers.each do |follower| %>
+          <%= render 'followers_list', object: follower %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="following" role="tabpanel" aria-labelledby="following-tab">
+      <div class="row mt-4">
+        <% @following.each do |f| %>
+          <%= render 'following_list', object: f %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="bookmarks" role="tabpanel" aria-labelledby="bookmarks-tab">
+      <div class="row mt-4">
+        <% @bookmarks.each.with_index do |bookmark, index| %>
+          <%= render 'card', object: bookmark.recipe %>
+        <% end %>
+      </div>
+      <%== pagy_bootstrap_nav (@pagy_bookmarks) if @pagy_bookmarks.pages > 1 %>
+    </div>
+
+    <div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
+      <h4 class="base-color mt-4">Thông Tin Cá Nhân</h4>
+      <hr>
+      <div>
+        <h5 class="d-inline">Họ tên:&nbsp;</h5><p class="d-inline"><%= @user.full_name %></p>
+      </div>
+      <div>
+        <h5 class="d-inline">Ngày sinh:&nbsp;</h5><p class="d-inline"><%= @user.birthday %></p>
+      </div>
+      <div>
+        <h5 class="d-inline">Giới tính:&nbsp;</h5>
+        <p class="d-inline">
+          <% unless @user.nil? %>
+            <% if @user.male %>
+              Nữ
+            <% else %>
+              Nam
+            <% end %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
   </div>
 </div>
