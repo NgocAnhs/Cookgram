@@ -1,3 +1,5 @@
+require('./preview_image'); //show image preview
+
 var changeNavbar = function () {
   if ($(window).scrollTop()) {
     $('.navbar').addClass('nav-positive');

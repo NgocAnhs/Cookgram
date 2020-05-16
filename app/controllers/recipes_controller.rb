@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index, :search]
   before_action :set_recipe, only: [:edit, :update, :show, :destroy]
-  # before_action :process_image, only: [:create]
+  before_action :process_image, only: [:create]
 
   def index
     @pagy_latest, @latest_recipes = pagy(Recipe.all.includes(:user, :likes, :comments).order("created_at desc"), page_param: :page_latest, params: { active_tab: 'lates' })
