@@ -72,6 +72,30 @@ class User < ApplicationRecord
       end
     end
   end
+
+  def avatar_thumbnail
+    if avatar.attached?
+      avatar.variant(resize: "150x150!").processed
+    else
+      'default_avatar.jpg'
+    end
+  end
+
+  private
+
+  def add_default_avatar
+    unless avatar.attached?
+      avatar.attach(
+        io: File.open(
+          Rails.root.join(
+            'app', 'assets', 'images', 'default_avatar.jpg'
+          )
+        ),
+        filename: 'default_avatar.jpg',
+        content_type: 'image/jpg'
+      )
+    end
+  end
   ##
   ## Validates
   validates :lname, :fname, presence: true, length: { in: 2..30 }

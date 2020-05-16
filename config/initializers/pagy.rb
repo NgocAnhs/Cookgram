@@ -4,4 +4,4 @@ require 'pagy/extras/countless'
 require 'pagy/extras/array'
 require 'pagy/extras/bootstrap'
 # set the default items per page
-Pagy::VARS[:items] = 12
+Pagy::VARS[:items] = 8

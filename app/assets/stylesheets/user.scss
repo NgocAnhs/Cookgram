@@ -159,3 +159,9 @@
     object-fit: cover;
   }
 }
+
+.avatar-thumbnail {
+  width: 100px;
+  height: 100px;
+  border: 1px solid $base-color;
+}

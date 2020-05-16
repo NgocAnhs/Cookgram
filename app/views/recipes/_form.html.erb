@@ -1,7 +1,6 @@
 <%= form_with model: object, local: true do |f| %>
   <div class="form-input">
     <div class="form-group mx-5 my-4">
-      <%= render 'layouts/upload_image', {f: f, image: :image, multi: false, max_file: 1} %>
       <%= f.text_field :title, class: 'form-control base-border-rounded mt-3', placeholder: t('activerecord.attributes.recipe.title') %>
     </div>
 

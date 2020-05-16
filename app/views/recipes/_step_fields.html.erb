@@ -1,6 +1,5 @@
 <div class="nested-fields">
   <%= f.text_area :content, rows: 2, class: "form-control base-border-rounded mb-2" %>
-  <%= render 'layouts/upload_image', {f: f, image: :step_images, multi: true, max_file: 4} %>
     
   <%= f.hidden_field :_destroy %>
   <%= link_to_remove_association "Loại bỏ bước", f, class: "remove-field hide-text rounded-circle" %>
