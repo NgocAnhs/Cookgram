@@ -15,7 +15,7 @@ class Recipe < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
   ## Validates
-  validates :title, length: { minimum: 5 }
+  validates :title, length: { in: 5..40 }
   validates_presence_of :ingredients, :steps
   validates_associated :ingredients, :steps
   ##

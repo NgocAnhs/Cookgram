@@ -74,10 +74,7 @@ class RecipesController < ApplicationController
     return unless img
     image = MiniMagick::Image.new(img.tempfile.path)
     image.strip
-    image.combine_options do |c|
-      c.quality "80"
-      c.resize "500x500^"
-    end
+    image.resize "720x540^"
   end
 
   def process_image

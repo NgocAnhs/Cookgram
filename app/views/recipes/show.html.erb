@@ -1,10 +1,10 @@
 <div class="col-lg-7 col-md-9 col-sm-10 mx-auto">
   <div class="main-image text-center">
-    <%= image_tag @recipe.image, style: 'width: 90%; max-height: 380px; border: 2px solid green', class: "base-border-rounded" %>
+    <%= image_tag @recipe.image, class: "large-img base-border-rounded" %>
   </div>
   <h4 class="base-color text-center mt-3"><%= @recipe.title %></h4>
   <div class="user text-center">
-    <a href="<%= root_path %>" style="color: orangered; font-weight: bold"><i class="fas fa-user"></i>  <%= @recipe.user.full_name %></a>
+    <a href="<%= user_path(@recipe.user) %>" style="color: orangered; font-weight: bold"><i class="fas fa-user"></i>  <%= @recipe.user.full_name %></a>
   </div>
 
   <div id="ingredients" class="mt-3">
