@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :index, :search]
+  before_action :authenticate_user!, except: [:index, :search, :preview]
   before_action :set_recipe, only: [:edit, :update, :show, :destroy]
   before_action :process_image, only: [:create]
 
@@ -14,6 +14,14 @@ class RecipesController < ApplicationController
   def show
   end
   
+  def preview
+    @recipe = Recipe.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   def search
     @parameter = params[:search].downcase
     @pagy, @results = pagy(Recipe.where("title LIKE ?", "%" + @parameter + "%"))

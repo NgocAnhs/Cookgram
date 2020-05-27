@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :likes, only: [:create, :destroy]
     end
     get '/search', to: 'recipes#search', as: 'search_recipe'
+    get '/preview/:id', to: 'recipes#preview', as: 'preview_recipe'
   end
   devise_for :users, only: :omniauth_callbacks, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
 end

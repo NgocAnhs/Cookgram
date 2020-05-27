@@ -2,7 +2,7 @@
   <div class="main-image text-center">
     <%= image_tag @recipe.image, class: "large-img base-border-rounded" %>
   </div>
-  <h4 class="base-color text-center mt-3"><%= @recipe.title %></h4>
+  <h4 class="base-color-text text-center mt-3"><%= @recipe.title %></h4>
   <div class="user text-center">
     <a href="<%= user_path(@recipe.user) %>" style="color: orangered; font-weight: bold"><i class="fas fa-user"></i>  <%= @recipe.user.full_name %></a>
   </div>
@@ -10,8 +10,8 @@
   <div id="ingredients" class="mt-3">
     <h4>Nguyên liệu:</h4  >
     <div class="horizontal-line"></div>
-    <% @recipe.ingredients.each do |ingredient| %>
-      <p class="ml-2"><%= ingredient.name %></p>
+    <% @recipe.ingredients.each.with_index do |ingredient, index| %>
+      <p class="ml-2"><%= "#{index + 1}. #{ingredient.name}" %></p>
     <% end %>
   </div>
   <div id="steps" class="my-3">

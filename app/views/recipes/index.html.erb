@@ -16,7 +16,7 @@
 <div class="tab-content" id="pills-tabContent">
   <div class="tab-pane fade show active" id="pills-latest" role="tabpanel" aria-labelledby="pills-latest-tab">
     <% unless @latest_recipes.empty? %>
-      <div class="box d-flex flex-wrap justify-content-between mx-5">
+      <div class="row mx-5">
         <% @latest_recipes.each do |recipe| %>
           <%= render 'recipes/box_item', recipe: recipe %>
         <% end %>
@@ -30,7 +30,7 @@
   <% if user_signed_in? %>
     <div class="tab-pane fade" id="pills-care" role="tabpanel" aria-labelledby="pills-care-tab">
       <% unless @care_recipes.empty? %>
-        <div class="box d-flex flex-wrap justify-content-between mx-5">
+        <div class="row mx-5">
           <% @care_recipes.each do |recipe| %>
             <%= render 'recipes/box_item', recipe: recipe %>
           <% end %>
@@ -44,6 +44,6 @@
 </div>
 
 <div class="master-chef">
-  <h4 class="base-color ml-4">BẾP YÊU THÍCH</h4>
+  <h4 class="base-color-text ml-4">BẾP YÊU THÍCH</h4>
   <%= render "recipes/fav_user" %>
 </div>

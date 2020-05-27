@@ -16,7 +16,7 @@
 
 @import 'base';
 
-.base-color {
+.base-color-text {
   color: $base-color;
 }
 
@@ -34,11 +34,7 @@
   height: 50px;
 }
 
-.rounded-15 {
-  border-radius: $base-border-rounded !important;
-}
-
-.color-main {
+.base-color-background {
   background-color: $base-color !important;
 }
 
@@ -54,7 +50,7 @@
 
   .btn-positive, .btn-negative {
     font-size: 18px;
-    transition: 1s;
+    transition: 0.5s;
   }
 }
 

@@ -1,8 +1,8 @@
 <div class="nested-fields my-2">
-  <div class="form-inline d-flex justify-content-center">
+  <div class="form-inline d-flex justify-content-center flex-nowrap">
     <%= f.text_field :name, class: "form-control base-border-rounded flex-grow-1 mr-2", placeholder: "Tên nguyên liệu" %>
     <%= f.hidden_field :_destroy %>
     <%= link_to_remove_association "<i class='fas fa-times fa-lg' aria-hidden='true'></i>".html_safe, f, 
-      class: "remove-field hide-text rounded-circle base-color" %>
+      class: "remove-field hide-text rounded-circle base-color-text" %>
   </div> 
 </div>

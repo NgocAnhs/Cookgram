@@ -1,6 +1,6 @@
 <% fb_share_url = "https://www.facebook.com/sharer/sharer.php?app_id="+ENV['FACEBOOK_APP_ID']+"&sdk=joey&u=" %>
 
-<div class="box-item">
+<div class="box-item col-lg-3 col-md-4 col-sm-6">
   <% if current_user == recipe.user %>
     <%= link_to recipe_path(recipe), class: "setting", method: :delete, 
         remote: true, data: {confirm: 'Bạn có chắc chắn xóa không?'} do %>
@@ -11,11 +11,12 @@
     <%= image_tag recipe.image %>
   </div>
   <ul class="action-list">
-    <li id="recipe-preview">
-      <%= link_to root_path do %>
-        <i class="far fa-eye fa-lg"></i>
-      <% end %>
+    <li id="recipe-preview-<%= recipe.id.to_s %>">
+    <%= link_to preview_recipe_path(id: recipe.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window-'+ recipe.id.to_s } do %>
+    <i class="far fa-eye fa-lg"></i>      
+    <% end %>
     </li>
+    
     <li id="recipe-like-link-<%= recipe.id.to_s %>">
       <%= render "likes/recipe/like_link", object: recipe %>
     </li>
@@ -37,6 +38,13 @@
       </span>
       <span id="comment-count"><i class="fas fa-comments"></i>&nbsp;<%= recipe.comments.size %></span>
     </div>
+  </div>
+</div>
+
+<!-- Modal show preview recipe -->
+<div id="modal-window-<%= recipe.id.to_s %>" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered mw-100 w-50" role="document">
+    <div class="modal-content base-border-rounded"></div>
   </div>
 </div>
 
