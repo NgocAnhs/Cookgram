@@ -1,9 +1,9 @@
 <% if user_signed_in? && object.is_liked(current_user).present? %>
-  <%= link_to recipe_like_path(object, object.is_liked(current_user)), method: :delete, remote: true do %>
+  <%= link_to recipe_like_path(object, object.is_liked(current_user)), method: :delete, remote: user_signed_in? do %>
     <i class="fas fa-heart fa-lg"></i>
   <% end %>
 <% else %>
-  <%= link_to recipe_likes_path(object), method: :post, remote: true do %>
+  <%= link_to recipe_likes_path(object), method: :post, remote: user_signed_in? do %>
     <i class="far fa-heart fa-lg"></i>
   <% end %>
 <% end %>

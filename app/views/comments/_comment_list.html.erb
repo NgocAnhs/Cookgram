@@ -14,7 +14,7 @@
         <span id="comment-like-link-<%= cmt.id.to_s %>">
           <%= render "likes/comment/like_link", object: cmt %>
         </span>
-        <% if current_user == recipe.user %>
+        <% if current_user == cmt.user %>
         | <%= link_to "Xóa", comment_path(cmt), method: :delete, 
           remote: true, data: {confirm: 'Bạn có chắc chắn xóa không?'} %>
         <% end %>

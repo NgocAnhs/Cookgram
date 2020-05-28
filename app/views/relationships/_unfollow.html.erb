@@ -1,3 +1,3 @@
 <div id="unfollow">
-  <%= link_to 'Bỏ theo dõi', relationship_path(user), method: :delete, remote: true, class: 'btn btn-positive' %>
+  <%= link_to 'Bỏ theo dõi', relationship_path(user), method: :delete, remote: user_signed_in?, class: 'btn btn-positive' %>
 </div>
