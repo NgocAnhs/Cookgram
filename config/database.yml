@@ -15,7 +15,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: <%= ENV['DB_USER'] %>
   password: <%= ENV['DB_PASS'] %>
-  # socket: /var/run/mysqld/mysqld.sock
+  socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
@@ -49,8 +49,6 @@ test:
 #
 production:
   <<: *default
-  adapter: postgresql
-  encoding: unicode
   database: Cookgram_production
   username: Cookgram
   password: <%= ENV['COOKGRAM_DATABASE_PASSWORD'] %>
