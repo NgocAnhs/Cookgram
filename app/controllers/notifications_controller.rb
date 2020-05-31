@@ -9,4 +9,5 @@ class NotificationsController < ApplicationController
     @notifications = current_user.notifications.not_read
     @notifications.update_all(seen: true)
     render json: {success: true}
+  end
 end
