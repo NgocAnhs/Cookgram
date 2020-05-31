@@ -38,6 +38,27 @@
   background-color: $base-color !important;
 }
 
+.dropdown-toggle::after {
+  content: none !important;
+}
+
+.dropdown-menu {
+  top: 135% !important;
+  background-color: #a9ffa9 !important;
+}
+.dropdown-menu-right {
+  right: -10px !important;
+}
+
+.dropdown-menu:before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: 9px;
+  border: 10px solid;
+  border-color: transparent transparent #a9ffa9 transparent;
+}
+
 .navbar {
   padding-top: 0.2rem !important;
   padding-bottom: 0.2rem !important;
@@ -111,7 +132,7 @@
 .search-input {
   border: 2px solid rgb(110, 110, 110);
   border-radius: $base-border-rounded;
-  width: 400px;
+  width: 100%;
   background-color: #fff;
  }
 

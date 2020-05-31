@@ -12,7 +12,7 @@
   </div>
   <ul class="action-list">
     <li id="recipe-preview-<%= recipe.id.to_s %>">
-    <%= link_to preview_recipe_path(id: recipe.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window-'+ recipe.id.to_s } do %>
+    <%= link_to preview_recipe_path(recipe), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window-'+ recipe.id.to_s } do %>
     <i class="far fa-eye fa-lg"></i>      
     <% end %>
     </li>

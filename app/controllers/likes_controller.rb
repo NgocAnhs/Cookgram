@@ -6,6 +6,7 @@ class LikesController < ApplicationController
     return unless @subject
     @like = @subject.likes.new(user_id: current_user.id)
     if @like.save
+      current_user.notifications.create(action: "liked", notifiable: @subject) unless current_user == @subject.user
       respond_to :js
     end
   end

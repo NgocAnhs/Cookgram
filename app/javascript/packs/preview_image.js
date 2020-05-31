@@ -34,7 +34,7 @@ function overLimitImage(max_file_number, file_upload){
 }
 
 $(document).on('turbolinks:load', function() {
-  $('.recipes.new').ready(function(){
+  if ($('.recipes.new').length) {
     var step_input = $('#steps').find('input:file');
     var thumb_input = $('#image-recipe-label').find('input:file');
     var previews = $(this).find('.preview');
@@ -53,14 +53,14 @@ $(document).on('turbolinks:load', function() {
     $('#steps')
     .on('cocoon:after-insert', function(e, added_task) {
       var input_file = $(added_task).find('input:file');
-      var previews = $(added_task).find('.preview');
+      var preview_added = $(added_task).find('.preview');
       input_file.change(function(){
         if (overLimitImage(4, input_file)){
           alert("You can't upload over 4 files.")
           $(input_file).val('');
         }
-        previewFiles(previews[0], input_file[0].files, 100, 100);
+        previewFiles(preview_added[0], input_file[0].files, 100, 100);
       });
     });
-  })  
+  }
 });

@@ -48,10 +48,10 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 # production:
-#   <<: *default
-#   database: Cookgram_production
-#   username: Cookgram
-#   password: <%= ENV['COOKGRAM_DATABASE_PASSWORD'] %>
-production:
   <<: *default
-  url: <%= ENV['CLEARDB_DATABASE_URL'] %>
+  database: Cookgram_production
+  username: Cookgram
+  password: <%= ENV['COOKGRAM_DATABASE_PASSWORD'] %>
+# production:
+#   <<: *default
+#   url: <%= ENV['CLEARDB_DATABASE_URL'] %>

@@ -1,4 +1,5 @@
 require('./preview_image'); //show image preview
+require('./notifications');
 
 var changeNavbar = function () {
   if ($(window).scrollTop()) {

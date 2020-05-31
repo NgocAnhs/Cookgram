@@ -1,6 +1,6 @@
 <div class="banner-area d-flex justify-content-center">
   <div class="search-area mt-5">
-    <%= form_tag search_recipe_path, method: :get, class: 'form-inline my-2 my-sm-0' do %>
+    <%= form_tag search_recipes_path, method: :get, class: 'form-inline my-2 my-sm-0' do %>
       <div class="search-input px-3 py-1 d-flex align-items-center">
         <span class="fas fa-search fa-2x"></span>
         <%= search_field_tag :search, params[:search], placeholder: t('input_search'), 

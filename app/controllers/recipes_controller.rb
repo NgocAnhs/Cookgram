@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :search, :preview]
-  before_action :set_recipe, only: [:edit, :update, :show, :destroy]
+  before_action :set_recipe, only: [:edit, :update, :show, :destroy, :preview]
   before_action :process_image, only: [:create]
 
   def index
@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
   end
   
   def preview
-    @recipe = Recipe.find(params[:id])
+    # @recipe = Recipe.find(params[:id])
     respond_to do |format|
       format.html
       format.js
@@ -37,7 +37,7 @@ class RecipesController < ApplicationController
     @recipe = current_user.recipes.new(recipe_params)
     if @recipe.save
       flash[:success] = t('controllers.recipes.create_success')
-      redirect_to root_path
+      redirect_to @recipe
     else
       flash[:error] = "Something went wrong"
       redirect_to root_path

@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     if @comment.save
       @recipe = @comment.recipe
+      current_user.notifications.create(action: "commented on", notifiable: @recipe) unless current_user == @recipe.user
       respond_to :js
     else
       flash[:error] = 'Something went wrong!'
