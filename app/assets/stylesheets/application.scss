@@ -42,22 +42,22 @@
   content: none !important;
 }
 
-.dropdown-menu {
-  top: 135% !important;
-  background-color: #a9ffa9 !important;
-}
-.dropdown-menu-right {
-  right: -10px !important;
-}
+// .dropdown-menu {
+//   top: 135% !important;
+//   background-color: #a9ffa9 !important;
+// }
+// .dropdown-menu-right {
+//   right: -10px !important;
+// }
 
-.dropdown-menu:before {
-  content: "";
-  position: absolute;
-  top: -20px;
-  right: 9px;
-  border: 10px solid;
-  border-color: transparent transparent #a9ffa9 transparent;
-}
+// .dropdown-menu:before {
+//   content: "";
+//   position: absolute;
+//   top: -20px;
+//   right: 9px;
+//   border: 10px solid;
+//   border-color: transparent transparent #a9ffa9 transparent;
+// }
 
 .navbar {
   padding-top: 0.2rem !important;

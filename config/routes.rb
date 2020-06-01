@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
     resources :notifications, only: :index do
       collection do
-        post :mark_as_seen
+        post :mark_as_read
       end
     end
 

@@ -84,7 +84,8 @@ ActiveRecord::Schema.define(version: 2020_05_30_020028) do
 
   create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.boolean "seen", default: false
+    t.bigint "actor_id", null: false
+    t.boolean "read", default: false
     t.string "action"
     t.integer "notifiable_id"
     t.string "notifiable_type"

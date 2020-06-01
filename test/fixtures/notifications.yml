@@ -2,14 +2,14 @@
 
 one:
   user: one
-  seen: false
+  read: false
   action: MyString
   notifiable_id: 1
   notifiable_type: MyString
 
 two:
   user: two
-  seen: false
+  read: false
   action: MyString
   notifiable_id: 1
   notifiable_type: MyString
