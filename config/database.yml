@@ -52,4 +52,4 @@ production:
   database: Cookgram_production
   username: Cookgram
   password: <%= ENV['COOKGRAM_DATABASE_PASSWORD'] %>
-  url: <%= ENV['CLEARDB_DATABASE_URL'] %>
+  # url: <%= ENV['CLEARDB_DATABASE_URL'] %>
