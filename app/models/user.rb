@@ -25,7 +25,7 @@ class User < ApplicationRecord
   end
 
   def full_name
-    "#{fname} #{lname}"
+    "#{lname} #{fname}"
   end
 
   def following_and_own_recipes

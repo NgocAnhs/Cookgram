@@ -1,5 +1,5 @@
 <% recipe.comments.reverse.each do |cmt| %>
-  <div class="d-flex">
+  <div class="d-flex" id="comment_<%= cmt.id.to_s %>">
     <div class="small-img">
       <%= image_tag "cookgram_logo.png", alt: "Cookgram", class: "small-img" %>
     </div>

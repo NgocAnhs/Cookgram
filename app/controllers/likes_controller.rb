@@ -14,6 +14,8 @@ class LikesController < ApplicationController
   def destroy
     @like = Like.find(params[:id])
     if current_user == @like.user && @like.destroy
+      @notification = Notification.find_by(notifiable: @subject)
+      @notification.destroy if @notification
       respond_to :js
     end
   end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'notifications/index'
+  mount ActionCable.server => '/cable'
+  
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     root to: 'recipes#index'
     devise_for :users, controllers: { registrations: 'registrations' }, skip: :omniauth_callbacks

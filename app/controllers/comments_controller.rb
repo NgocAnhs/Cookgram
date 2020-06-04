@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     if @comment.save
       @recipe = @comment.recipe
-      Notification.create(user_id: @recipe.user.id, actor_id: current_user.id, action: "commented on", notifiable: @recipe) unless current_user == @recipe.user
+      Notification.create(user_id: @recipe.user.id, actor_id: current_user.id, action: "commented_on", notifiable: @recipe) unless current_user == @recipe.user
       respond_to :js
     else
       flash[:error] = 'Something went wrong!'
@@ -16,6 +16,8 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @recipe = @comment.recipe
     if current_user == @comment.user && @comment.destroy
+      # @notification = Notification.find_by(notifiable: @recipe)
+      # @notification.destroy if @notification
       respond_to :js
     else
       flash[:error] = "Something went wrong!"

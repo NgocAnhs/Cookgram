@@ -11,12 +11,15 @@ vn:
   or: "Hoặc"
   create_recipe: "Tạo công thức mới"
   login_with: "Đăng nhập với "
+  liked: "thích"
+  commented_on: "đã bình luận về"
   controllers:
     recipes:
       create_success: "Công thức đã được đăng thành công"
   activerecord:
     models:
       user: "User"
+      recipe: "Công Thức"
     attributes:
       user:
         fname: "Tên"

@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:fname, :lname, :birthday, :male, :avatar])
   end
 
+  
   private
   def set_locale
     I18n.locale = extract_locale || I18n.default_locale
