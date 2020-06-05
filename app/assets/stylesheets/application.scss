@@ -154,3 +154,19 @@
   color: red;
   font-style: italic;
 }
+
+#notifications {
+  .unread-count {
+    background-color: red;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 7px;
+    top: -4px;
+    border-radius: 50%;
+    color: white;
+    border: 1px solid white;
+    font-size: 10px;
+    text-align: center;
+  }
+}

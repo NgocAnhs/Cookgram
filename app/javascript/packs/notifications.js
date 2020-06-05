@@ -29,17 +29,24 @@ $(document).on('turbolinks:load', function(){
           dataType: "JSON",
           method: "POST",
           success: function() {
-            return $("[data-behavior='unread-count']").text(0);
+            return $("[data-behavior='unread-count']").addClass('d-none');
           }
         });
       };
   
       Notifications.prototype.handleSuccess = function(data) {
         var items;
+        var unread_count = 0;
         items = $.map(data, function(notification) {
-          return `<a class='dropdown-item' href='${notification.url}'>${notification.actor} ${notification.action} your ${notification.notifiable_type}</a>`;
+          if (!notification.read)
+            unread_count++;
+
+          return `<a class='dropdown-item' href='${notification.url}'><strong>${notification.actor}</strong> ${notification.action} your ${notification.notifiable_type.toLowerCase()}: <i>"${notification.content}"</i></a><hr style='margin:0'>`;
         });
-        $("[data-behavior='unread-count']").text(items.length);
+        if (unread_count > 0)
+          $("[data-behavior='unread-count']").removeClass('d-none').text(unread_count);
+        else
+          $("[data-behavior='unread-count']").addClass('d-none');
         return $("[data-behavior='notification-items']").html(items);
       };
   
