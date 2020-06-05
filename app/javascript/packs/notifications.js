@@ -41,7 +41,7 @@ $(document).on('turbolinks:load', function(){
           if (!notification.read)
             unread_count++;
 
-          return `<a class='dropdown-item' href='${notification.url}'><strong>${notification.actor}</strong> ${notification.action} your ${notification.notifiable_type.toLowerCase()}: <i>"${notification.content}"</i></a><hr style='margin:0'>`;
+          return `<a class='dropdown-item' href='${notification.url}'><strong>${notification.actor}</strong> ${notification.action} your ${notification.notifiable_type.toLowerCase()}: <i>${notification.content}</i></a><hr style='margin:0'>`;
         });
         if (unread_count > 0)
           $("[data-behavior='unread-count']").removeClass('d-none').text(unread_count);
