@@ -62,6 +62,7 @@ gem 'friendly_id'
 gem 'cocoon'
 gem 'pagy', '~> 3.8'
 gem 'google-cloud-storage', '~> 1.26', '>= 1.26.2'
+gem "ratyrate"
 ##
 
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?

@@ -24,6 +24,10 @@
   border-radius: $base-border-rounded !important;
 }
 
+.base-border-color {
+  border: 1px solid $base-color !important;
+}
+
 .horizontal-line {
   border-top: 3px solid green;
   margin-bottom: 15px;
@@ -64,8 +68,13 @@
   padding-bottom: 0.2rem !important;
   border-top: 10px solid green;
 
+  .navbar-brand {
+    max-width: 10%;
+    min-width: 50px;
+  }
+
   .nav-icon {
-    height: 100px;
+    width: 100%;
     transition: 1s;
   }
 
@@ -80,7 +89,7 @@
   border: 0;
 
   .nav-icon {
-    height: 45px;
+    width: 50px;
   }
 
   .btn-positive, .btn-negative {

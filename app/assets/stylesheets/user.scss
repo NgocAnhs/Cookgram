@@ -75,7 +75,11 @@
   }
 
   h4:after {
-    @extend h4:before;
+    content: "";
+    border: 1px solid #a19f9f;
+    position: absolute;
+    width: 35%;
+    top: 15px;
     right: -2px;
     left: auto;
   }

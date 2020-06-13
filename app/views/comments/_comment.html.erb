@@ -1,4 +1,7 @@
 <%= form_for @comment = Comment.new, remote: true do |f| %>
   <%= f.hidden_field :recipe_id, value: recipe.id %>
-  <%= f.text_field :content, class: "base-border-rounded form-control", placeholder: "Bạn nghĩ gì về món ăn này?", autocomplete: :off %>
+  <%= f.text_field :content, class: "base-border-rounded form-control w-75 d-inline", placeholder: "Bạn nghĩ gì về món ăn này?", autocomplete: :off %>
+  <%= button_tag(type: "submit", class: "btn base-border-rounded base-border-color") do %>
+    <i class="fas fa-paper-plane"></i>
+  <% end %>
 <% end %>

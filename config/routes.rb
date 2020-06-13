@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'notifications/index'
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     root to: 'recipes#index'
+    post '/rate' => 'rater#create', :as => 'rate'
     devise_for :users, controllers: { registrations: 'registrations' }, skip: :omniauth_callbacks
     resources :users, only: [:show]
 

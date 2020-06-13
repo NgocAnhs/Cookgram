@@ -10,6 +10,8 @@ class Recipe < ApplicationRecord
   has_one_attached :image
   accepts_nested_attributes_for :ingredients, reject_if: ->(atts){ atts['name'].blank? }, allow_destroy: true
   accepts_nested_attributes_for :steps, reject_if: :all_blank, allow_destroy: true
+
+  ratyrate_rateable 'quality'
   ##
 
   extend FriendlyId

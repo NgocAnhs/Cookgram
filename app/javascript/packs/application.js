@@ -13,6 +13,8 @@ require("@fortawesome/fontawesome-free/js/all");
 require("../src/application");
 require("./custom");
 require("./cocoon");
+require("./jquery.raty");
+require("./ratyrate");
 
 const toastr = require('toastr');
 window.toastr = toastr;

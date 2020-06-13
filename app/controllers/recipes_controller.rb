@@ -36,6 +36,9 @@ class RecipesController < ApplicationController
   def create
     @recipe = current_user.recipes.new(recipe_params)
     if @recipe.save
+      current_user.followers.each do |follower|
+        Notification.create(user_id: follower.id, actor_id: current_user.id, action: "posted", notifiable: @recipe)
+      end
       flash[:success] = t('controllers.recipes.create_success')
       redirect_to @recipe
     else
