@@ -1,32 +1,11 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :search, :preview]
-  before_action :set_recipe, only: [:edit, :update, :show, :destroy, :preview]
+  before_action :authenticate_user!
+  before_action :set_recipe, only: [:edit, :update, :show, :destroy]
   before_action :process_image, only: [:create]
 
-  def index
-    @pagy_latest, @latest_recipes = pagy(Recipe.all.includes(:user, :likes, :comments).order("created_at desc"), page_param: :page_latest, params: { active_tab: 'lates' })
-    
-    if user_signed_in?
-      @pagy_care, @care_recipes = pagy_array(current_user.following_and_own_recipes, page_param: :page_care, params: { active_tab: 'care' }) ## temp
-    end
-  end
-  
   def show
   end
   
-  def preview
-    # @recipe = Recipe.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
-
-  def search
-    @parameter = params[:search].downcase
-    @pagy, @results = pagy(Recipe.where("title LIKE ?", "%" + @parameter + "%"))
-  end
-
   def new
     @recipe = Recipe.new
     @recipe.ingredients.new
@@ -86,6 +65,10 @@ class RecipesController < ApplicationController
     image = MiniMagick::Image.new(img.tempfile.path)
     image.strip
     image.resize "720x540^"
+    image.gravity "Center"
+    x = image.width > 720 ? (image.width - 720) / 2 : 0
+    y = image.height > 540 ? (image.height - 540) / 2 : 0
+    image.crop "720x540+#{x}+#{y}"
   end
 
   def process_image

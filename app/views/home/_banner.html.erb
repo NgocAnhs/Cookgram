@@ -1,6 +1,6 @@
 <div class="banner-area">
   <div class="search-area col-md-5 mt-5 mx-auto">
-    <%= form_tag search_recipes_path, method: :get, class: 'row my-2 my-sm-0' do %>
+    <%= form_tag search_home_index_path, method: :get, class: 'row my-2 my-sm-0' do %>
       <div class="search-input px-3 py-1 d-flex align-items-center col-md-9">
         <span class="fas fa-search fa-2x"></span>
         <%= search_field_tag :search, params[:search], placeholder: t('input_search'), 
