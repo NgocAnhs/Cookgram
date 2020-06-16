@@ -8,7 +8,9 @@
     <% end %>
   <% end %>
   <div class="box-img">
-    <%= image_tag recipe.image %>
+    <%= link_to recipe_path(recipe) do %>
+      <%= image_tag recipe.image %>
+    <% end %>
   </div>
   <ul class="action-list">
     <li id="recipe-preview-<%= recipe.id.to_s %>">

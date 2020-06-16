@@ -43,7 +43,11 @@
   <% end %>
 </div>
 
-<div class="master-chef">
-  <h4 class="base-color-text ml-4">BẾP YÊU THÍCH</h4>
-  <%= render "home/fav_user" %>
+<div class="master-chef my-5">
+  <h3 class="base-color-text ml-3 mb-3 font-weight-bold">BẾP YÊU THÍCH</h3>
+  <div class="row mx-5">
+    <% @master_chefs.each do |chef| %>
+      <%= render 'home/box_user', user: chef %>
+    <% end %>
+  </div>
 </div>
