@@ -34,12 +34,12 @@ function overLimitImage(max_file_number, file_upload){
 }
 
 $(document).on('turbolinks:load', function() {
-  $('#modalConfirm').on('show.bs.modal', function (event) {
+  $('#modalConfirm').on('shown.bs.modal', function (event) {
+    console.log("modal delete open")
     var button = $(event.relatedTarget) // Button that triggered the modal
     var path = button.data('whatever') // Extract info from data-* attributes
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-    console.log("modal open")
     var modal = $(this)
     modal.find('#btnConfirmDelete').attr('href', path)
   })

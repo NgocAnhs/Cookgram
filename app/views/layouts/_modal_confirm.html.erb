@@ -12,7 +12,7 @@
       </div>
       <div class="modal-footer">
         <%= link_to 'Delete', '#', method: :delete, 
-        remote: true, class: "btn btn-danger", id: "btnConfirmDelete" %>
+        remote: true, class: "btn btn-danger", id: "btnConfirmDelete", data: {dismiss: "modal"} %>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
