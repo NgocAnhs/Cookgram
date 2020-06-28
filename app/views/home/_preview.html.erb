@@ -5,11 +5,13 @@
       <div class="box-img base-border-rounded" style="border:2px solid green">
       <%= image_tag recipe.image, class:"mw-100 base-border-rounded" %>
     </div>
-    <div class="recipe-info">
-      <h5>Rating</h5>
-      <h5>Love</h5>
-      <h5>Comment</h5>
-      <h5>Chef</h5>
+    <div class="recipe-info my-2">
+    <%= rating_for recipe, "quality", disable_after_rate: true, imdb_avg: true %>
+      <h5><i class="fas fa-heart"></i>&nbsp;<%= recipe.likes.size %></h5>
+      <h5><i class="fas fa-comments"></i>&nbsp;<%= recipe.comments.size %></h5>
+      <h5>
+      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#e67e22"><path d="M86,6.88c-12.04,0 -23.435,5.84531 -30.315,15.48c-3.78937,-1.03469 -7.17562,-1.72 -10.965,-1.72c-20.98937,0 -37.84,16.85063 -37.84,37.84c0,15.82938 9.63469,29.53563 24.08,35.045v37.195h110.08v-37.195c14.44531,-5.50937 24.08,-19.565 24.08,-35.045c0,-20.98937 -16.85062,-37.84 -37.84,-37.84c-3.78937,0 -7.17562,0.68531 -10.965,1.72c-6.88,-9.63469 -18.275,-15.48 -30.315,-15.48zM61.92,92.88c2.06938,0 3.44,1.37063 3.44,3.44v10.32c0,2.06938 -1.37062,3.44 -3.44,3.44c-2.06937,0 -3.44,-1.37062 -3.44,-3.44v-10.32c0,-2.06937 1.37063,-3.44 3.44,-3.44zM86,92.88c2.06938,0 3.44,1.37063 3.44,3.44v13.76c0,2.06938 -1.37062,3.44 -3.44,3.44c-2.06937,0 -3.44,-1.37062 -3.44,-3.44v-13.76c0,-2.06937 1.37063,-3.44 3.44,-3.44zM110.08,92.88c2.06938,0 3.44,1.37063 3.44,3.44v10.32c0,2.06938 -1.37062,3.44 -3.44,3.44c-2.06937,0 -3.44,-1.37062 -3.44,-3.44v-10.32c0,-2.06937 1.37063,-3.44 3.44,-3.44zM30.96,137.6v24.08c0,2.06938 1.37063,3.44 3.44,3.44h103.2c2.06938,0 3.44,-1.37062 3.44,-3.44v-24.08z"></path></g></g></svg> 
+      <%= recipe.user.full_name %></h5>
     </div>
     </div>
     <div class="col-7">

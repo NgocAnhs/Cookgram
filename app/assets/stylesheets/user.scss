@@ -1,6 +1,6 @@
 @import "base";
 
-.registrations, .sessions, .confirmations, .passwords {
+.registrations.new, .sessions, .confirmations, .passwords {
   display: flex;
   flex-direction: column;
   align-items: center;

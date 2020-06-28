@@ -6,6 +6,7 @@ class Recipe < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :viewed_recipes, dependent: :destroy
   
   has_one_attached :image
   accepts_nested_attributes_for :ingredients, reject_if: ->(atts){ atts['name'].blank? }, allow_destroy: true

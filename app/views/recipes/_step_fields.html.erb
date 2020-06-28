@@ -4,11 +4,17 @@
     <label class="mx-2 base-border-rounded preview-step-label">
       <%= f.file_field :step_images, multiple: true, class: 'd-none' %>
       <div class="preview d-flex flex-wrap justify-content-around align-items-center">
-        <div class="text-center" style="color:gray">
-          <i class="fas fa-camera fa-3x"></i><br>
-          <i>Click để đăng hình</i><br>
-          <small>(Tối đa 4 hình)</small>
-        </div>
+        <% if f.object.step_images.present? %>
+          <% f.object.step_images.each do |img| %>
+            <%= image_tag img, class: 'base-border-rounded', style: "object-fit: cover;height: 100px;width: 100px" %>
+          <% end %>
+        <% else %>
+          <div class="text-center" style="color:gray">
+            <i class="fas fa-camera fa-3x"></i><br>
+            <i>Click để đăng hình</i><br>
+            <small>(Tối đa 4 hình)</small>
+          </div>
+        <% end %>
       </div>
     </label>
     

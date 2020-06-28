@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_05_163859) do
+ActiveRecord::Schema.define(version: 2020_06_16_151853) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -190,6 +190,15 @@ ActiveRecord::Schema.define(version: 2020_06_05_163859) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "viewed_recipes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_viewed_recipes_on_recipe_id"
+    t.index ["user_id"], name: "index_viewed_recipes_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookmarks", "recipes"
   add_foreign_key "bookmarks", "users"
@@ -204,4 +213,6 @@ ActiveRecord::Schema.define(version: 2020_06_05_163859) do
   add_foreign_key "relationships", "users", column: "followed_id"
   add_foreign_key "relationships", "users", column: "follower_id"
   add_foreign_key "steps", "recipes"
+  add_foreign_key "viewed_recipes", "recipes"
+  add_foreign_key "viewed_recipes", "users"
 end

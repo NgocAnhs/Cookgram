@@ -39,7 +39,7 @@
       <h4>Bình luận:</h4>
       <div class="comment-input-area d-flex">
         <div class="small-img">
-          <%= image_tag "cookgram_logo.png", alt: "Cookgram", class: "small-img" %>
+          <%= image_tag current_user.avatar_size(:small), alt: "Cookgram", class: "small-img" %>
         </div>
         <div id="comment-form" class="flex-grow-1 ml-2">
           <%= render "comments/comment", recipe: @recipe %>

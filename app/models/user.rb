@@ -1,4 +1,10 @@
+require './lib/recommendation.rb'
+# in order to use the open() method with urls
+require 'open-uri'
+
 class User < ApplicationRecord
+  include Recommendation
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -13,6 +19,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :notifications, dependent: :destroy
+  has_many :viewed_recipes, dependent: :destroy
 
   has_many :active_relationships, foreign_key: :follower_id, class_name: "Relationship", dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
@@ -62,11 +69,25 @@ class User < ApplicationRecord
     user.password = Devise.friendly_token[0, 20]
     user.fname = auth.info.first_name # assuming the user model has a first name
     user.lname = auth.info.last_name # assuming the user model has a last name
+    downloaded_image = open(auth.info.image + "?type=large")
+    user.avatar.attach(io: downloaded_image, filename: 'avatar', content_type: downloaded_image.content_type)
     # user.avatar = auth.info.image # assuming the user model has an image
     user.save
     user
   end
 
+  def update_without_password(params, *options)
+
+    if params[:password].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation) if params[:password_confirmation].blank?
+    end
+
+    result = update_attributes(params, *options)
+    clean_up_passwords
+    result
+  end
+  
   def self.new_with_session(params, session)
     super.tap do |user|
       if (data = session['devise.facebook_data'] && session['devise.facebook_data']['extra']['raw_info'])
@@ -75,9 +96,10 @@ class User < ApplicationRecord
     end
   end
 
-  def avatar_thumbnail
+  def avatar_size(size)
+    sizes = {normal: {resize: "150x150!"}, small: {resize: "50x50!"}}
     if avatar.attached?
-      avatar.variant(resize: "150x150!").processed
+      avatar.variant(sizes[size]).processed
     else
       'default_avatar.jpg'
     end
@@ -101,4 +123,14 @@ class User < ApplicationRecord
   ##
   ## Validates
   validates :lname, :fname, presence: true, length: { in: 2..30 }
+  validate :age_cannot_be_lower_12
+  attr_readonly :email
+  
+  private
+
+  def age_cannot_be_lower_12
+    if birthday.present? && birthday > 12.years.ago
+        errors.add(:birthday, ' should be over 12 years old.')
+    end
+  end
 end

@@ -2,10 +2,8 @@
 
 <div class="box-item col-lg-3 col-md-4 col-sm-6">
   <% if current_user == recipe.user %>
-    <%= link_to recipe_path(recipe), class: "setting", method: :delete, 
-        remote: true, data: {confirm: 'Bạn có chắc chắn xóa không?'} do %>
-      <i class="fas fa-times"></i>
-    <% end %>
+    <%= link_to "<i class='fas fa-times'></i>".html_safe, '#modalConfirm', class: "setting", 
+    data: {toggle: 'modal', target: '#modalConfirm', whatever: recipe_path(recipe) } %>
   <% end %>
   <div class="box-img">
     <%= link_to recipe_path(recipe) do %>
@@ -15,7 +13,7 @@
   <ul class="action-list">
     <li id="recipe-preview-<%= recipe.id.to_s %>">
     <%= link_to preview_home_path(recipe), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window-'+ recipe.id.to_s } do %>
-    <i class="far fa-eye fa-lg"></i>      
+      <i class="far fa-eye fa-lg"></i>  
     <% end %>
     </li>
     

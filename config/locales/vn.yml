@@ -24,6 +24,9 @@ vn:
         password: "Mật Khẩu"
         password_confirmation: "Xác nhận mật khẩu"
         birthday: "Ngày Sinh"
+        gender: "Giới Tính"
+        male: "Nam"
+        female: "Nữ"
       recipe:
         title: "Tên món ăn"
   date:

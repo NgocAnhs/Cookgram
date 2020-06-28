@@ -4,10 +4,14 @@
       <label id="image-recipe-label", class="base-border-rounded">
         <%= f.file_field :image, class: "d-none" %>
         <div class="preview d-flex justify-content-around align-items-center">
-          <div class="text-center" style="color:gray">
-            <i class="fas fa-camera fa-3x"></i><br>
-            <i>Click để đăng hình</i>          
-          </div>
+          <% if object.image.present? %>
+            <%= image_tag object.image, class: 'base-border-rounded', style: "object-fit: cover;height: 340px;width: 600px" %>
+          <% else %>
+            <div class="text-center" style="color:gray">
+              <i class="fas fa-camera fa-3x"></i><br>
+              <i>Click để đăng hình</i>          
+            </div>
+          <% end %>
         </div>
       </label>
       

@@ -4,6 +4,9 @@ class RecipesController < ApplicationController
   before_action :process_image, only: [:create]
 
   def show
+    # save log recipe was viewd by current user
+    exist = ViewedRecipe.find_by(user_id: current_user.id, recipe_id: @recipe.id).present?
+    ViewedRecipe.create(user_id: current_user.id, recipe_id: @recipe.id) unless exist
   end
   
   def new
@@ -26,6 +29,9 @@ class RecipesController < ApplicationController
     end
   end
 
+  def edit
+  end
+  
   def update
     if @recipe.update(recipe_params)
       flash[:success] = "Cập nhật công thức thành công!"

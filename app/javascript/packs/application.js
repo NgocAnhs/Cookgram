@@ -10,11 +10,12 @@ require("channels")
 
 require("bootstrap");
 require("@fortawesome/fontawesome-free/js/all");
-require("../src/application");
-require("./custom");
 require("./cocoon");
 require("./jquery.raty");
 require("./ratyrate");
+require("../src/application");
+require("./custom");
+
 
 const toastr = require('toastr');
 window.toastr = toastr;

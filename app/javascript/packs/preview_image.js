@@ -34,7 +34,16 @@ function overLimitImage(max_file_number, file_upload){
 }
 
 $(document).on('turbolinks:load', function() {
-  if ($('.recipes.new').length) {
+  $('#modalConfirm').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var path = button.data('whatever') // Extract info from data-* attributes
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    console.log("modal open")
+    var modal = $(this)
+    modal.find('#btnConfirmDelete').attr('href', path)
+  })
+  if ($('.recipes.new').length || $('.recipes.edit').length) {
     var step_input = $('#steps').find('input:file');
     var thumb_input = $('#image-recipe-label').find('input:file');
     var previews = $(this).find('.preview');
@@ -62,5 +71,22 @@ $(document).on('turbolinks:load', function() {
         previewFiles(preview_added[0], input_file[0].files, 100, 100);
       });
     });
+  }
+  if ($('.registrations.edit').length) {
+    var upload_avt = $('#user_avatar')
+    const preview = $('#avatar-preview')[0];
+    const reader = new FileReader();
+
+    upload_avt.change(function(){
+
+      reader.addEventListener("load", function () {
+        // convert image file to base64 string
+        preview.src = reader.result;
+      }, false);
+  
+      if (upload_avt[0].files[0]) {
+        reader.readAsDataURL(upload_avt[0].files[0]);
+      }
+    })
   }
 });

@@ -35,7 +35,8 @@
 
 .vertical-line {
   border-left: 2px solid green;
-  height: 50px;
+  height: 100%;
+  min-height: 50px;
 }
 
 .base-color-background {
