@@ -35,6 +35,13 @@
         <%= link_to t('create_recipe'), new_recipe_path, class: "btn btn-highlight" %>
       </li>
       <div class="vertical-line mx-2"></div>
+      <% if current_user.admin? %>
+        <li class="nav-item my-auto mx-2">
+          <%= link_to '/admin', class: "btn-icon base-color-text" do %>
+            <i class="fas fa-users-cog fa-lg"></i>
+          <% end %>
+        </li>
+      <% end %>
       <li class="nav-item btn-group my-auto mx-2" id="notifications" data-behavior="notifications">
         <a href="#" class="btn-icon base-color-text dropdown-toggle" data-toggle="dropdown" data-behavior="notifications-link" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-bell fa-lg"></i>
