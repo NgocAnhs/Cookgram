@@ -7,8 +7,7 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-import jquery from 'jquery';
-window.$ = window.jquery = jquery;
+
 require("bootstrap");
 require("@fortawesome/fontawesome-free/js/all");
 require("./cocoon");
@@ -17,6 +16,7 @@ require("./ratyrate");
 require("../src/application");
 require("./custom");
 
+global.$ = jQuery;
 
 const toastr = require('toastr');
 window.toastr = toastr;
