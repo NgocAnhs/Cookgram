@@ -102,6 +102,19 @@ GEM
     dotenv-rails (2.7.5)
       dotenv (= 2.7.5)
       railties (>= 3.2, < 6.1)
+    elasticsearch (7.8.0)
+      elasticsearch-api (= 7.8.0)
+      elasticsearch-transport (= 7.8.0)
+    elasticsearch-api (7.8.0)
+      multi_json
+    elasticsearch-model (7.1.0)
+      activesupport (> 3)
+      elasticsearch (> 1)
+      hashie
+    elasticsearch-rails (7.1.0)
+    elasticsearch-transport (7.8.0)
+      faraday (~> 1)
+      multi_json
     erubi (1.9.0)
     faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
@@ -321,6 +334,7 @@ GEM
     uber (0.1.0)
     warden (1.2.8)
       rack (>= 2.0.6)
+    wdm (0.1.1)
     web-console (4.0.2)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -353,6 +367,8 @@ DEPENDENCIES
   cocoon
   devise
   dotenv-rails
+  elasticsearch-model
+  elasticsearch-rails
   friendly_id
   google-cloud-storage (~> 1.26, >= 1.26.2)
   jbuilder (~> 2.7)
@@ -370,6 +386,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
   tzinfo-data
+  wdm (>= 0.1.0)
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
