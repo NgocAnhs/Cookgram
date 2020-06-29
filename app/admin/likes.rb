@@ -5,7 +5,7 @@ ActiveAdmin.register Like do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :user_id, :recipe_id, :comment_id
+  permit_params :user_id, :recipe_id, :comment_id
   #
   # or
   #

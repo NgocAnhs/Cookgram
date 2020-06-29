@@ -5,7 +5,7 @@ ActiveAdmin.register Rate do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :rater_id, :rateable_type, :rateable_id, :stars, :dimension
+  permit_params :rater_id, :rateable_type, :rateable_id, :stars, :dimension
   #
   # or
   #
