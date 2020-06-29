@@ -49,21 +49,19 @@ class Recipe < ApplicationRecord
     end
   end
 
+  def as_indexed_json(options={})
+    self.as_json(
+      include: { ingredients: { only: :name}
+              })
+  end
+
   def self.search(query)
     __elasticsearch__.search(
       {
         query: {
           multi_match: {
             query: query,
-            fields: ['title^10', 'name']
-          }
-        },
-        highlight: {
-          pre_tags: ['<em>'],
-          post_tags: ['</em>'],
-          fields: {
-            title: {},
-            text: {}
+            fields: ['title', 'ingredients.name']
           }
         }
       }
