@@ -3,7 +3,8 @@
 <% unless @results.empty? %>
   <h4 class="mt-5 ml-3">Chúng tôi đã tìm thấy <%= @results.size %> công thức cho bạn:</h4>
   <div class="row active mx-5">
-    <% @results.each do |recipe| %>
+    <% @results.each do |result| %>
+      <% recipe = Recipe.find_by_id(result.id) %>
       <%= render 'home/box_item', recipe: recipe %>
     <% end %>
   </div>

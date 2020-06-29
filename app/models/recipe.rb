@@ -1,4 +1,8 @@
+require 'elasticsearch/model'
+
 class Recipe < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
   ## Associations
   belongs_to :user
   has_many :steps, dependent: :destroy
@@ -35,5 +39,46 @@ class Recipe < ApplicationRecord
   def is_bookmarked(user)
     Bookmark.find_by(user_id: user.id, recipe_id: id)
   end
+
+  settings index: { number_of_shards: 1 } do
+    mappings dynamic: 'false' do
+      indexes :title, analyzer: 'english', index_options: 'offsets'
+      indexes :ingredients do
+        indexes :name, analyzer: 'english'
+      end
+    end
+  end
+
+  def self.search(query)
+    __elasticsearch__.search(
+      {
+        query: {
+          multi_match: {
+            query: query,
+            fields: ['title^10', 'name']
+          }
+        },
+        highlight: {
+          pre_tags: ['<em>'],
+          post_tags: ['</em>'],
+          fields: {
+            title: {},
+            text: {}
+          }
+        }
+      }
+    )
+  end
   ##
 end
+
+# Delete the previous articles index in Elasticsearch
+Recipe.__elasticsearch__.client.indices.delete index: Recipe.index_name rescue nil
+
+# Create the new index with the new mapping
+Recipe.__elasticsearch__.client.indices.create \
+  index: Recipe.index_name,
+  body: { settings: Recipe.settings.to_hash, mappings: Recipe.mappings.to_hash }
+
+# Index all Recipe records from the DB to Elasticsearch
+Recipe.import

@@ -18,8 +18,13 @@ class HomeController < ApplicationController
   end
 
   def search
-    @parameter = params[:search].downcase
-    @pagy, @results = pagy(Recipe.where("title LIKE ?", "%" + @parameter + "%"))
+    # @parameter = params[:search].downcase
+    if params[:search].nil?
+      @results = []
+    else
+      @pagy, @results = pagy(Recipe.search params[:search])
+    end
+    # @pagy, @results = pagy(Recipe.where("title LIKE ?", "%" + @parameter + "%"))
   end
 
   private
