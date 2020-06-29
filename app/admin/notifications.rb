@@ -5,7 +5,7 @@ ActiveAdmin.register Notification do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :user_id, :actor_id, :read, :action, :notifiable_id, :notifiable_type
+  permit_params :user_id, :actor_id, :read, :action, :notifiable_id, :notifiable_type
   #
   # or
   #
