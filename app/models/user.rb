@@ -41,11 +41,11 @@ class User < ApplicationRecord
     my_following = active_relationships
     our_recipes = []
     my_following.each do |f|
-      f.followed.recipes&.where(published: true).each do |r|
+      f.followed.recipes&.published.each do |r|
         our_recipes << r
       end
     end
-    recipes.each do |r|
+    recipes.published.each do |r|
       our_recipes << r
     end
     our_recipes.sort_by(&:created_at).reverse

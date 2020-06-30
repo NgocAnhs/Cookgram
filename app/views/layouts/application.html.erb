@@ -13,7 +13,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="<%= controller_name %> <%= action_name %>">
+  <body class="<%= controller_name %> <%= action_name %> mx-auto" style="max-width: 1200px;">
     <% devise_controller = ['registrations', 'sessions', 'confirmations', 'passwords']  %>
     <%= render 'layouts/navbar' unless devise_controller.include? controller_name %>
     <%= yield %>

@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @pagy_latest, @latest_recipes = pagy(Recipe.all.where(published: true).includes(:user, :likes, :comments).order("created_at desc"), page_param: :page_latest, params: { active_tab: 'lates' })
+    @pagy_latest, @latest_recipes = pagy(Recipe.all.published.includes(:user, :likes, :comments).order("created_at desc"), page_param: :page_latest, params: { active_tab: 'lates' })
     @master_chefs = find_master_chefs
     if user_signed_in?
       @recommend_recipes = current_user.recommend_recipes.collect { |val| val[0].recipe if val[0].recipe.published }.compact.take(4).shuffle
