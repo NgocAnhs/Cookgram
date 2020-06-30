@@ -32,3 +32,4 @@ yarn-debug.log*
 
 .env
 /config/secrets/*
+/elasticsearch-7.8.0

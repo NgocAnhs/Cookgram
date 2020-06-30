@@ -1,3 +1,4 @@
+<% unless !object.published && current_user != object.user %>
 <div class="mb-4 col-md-6">
   <div class="card row no-gutters base-border-rounded">
     <div class="col-md-5">
@@ -10,8 +11,12 @@
           <i class="fas fa-heart"></i>&nbsp;<%= object.likes.size %>&nbsp;
           <i class="fas fa-comments"></i>&nbsp;<%= object.comments.size %>
         </p>
-        <p class="card-text"><small class="text-muted"><%= object.updated_at.localtime %></small></p>
+        <p class="card-text my-1"><small class="text-muted"><%= object.updated_at.localtime %></small></p>
+        <% unless object.published %>
+          <button type="button" class="btn btn-danger btn-sm" disabled>Pending</button>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
+<% end %>

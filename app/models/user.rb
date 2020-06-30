@@ -41,7 +41,7 @@ class User < ApplicationRecord
     my_following = active_relationships
     our_recipes = []
     my_following.each do |f|
-      f.followed.recipes&.each do |r|
+      f.followed.recipes&.where(published: true).each do |r|
         our_recipes << r
       end
     end
