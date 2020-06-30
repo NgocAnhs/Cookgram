@@ -3,6 +3,9 @@ require 'elasticsearch/model'
 class Recipe < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
+  # scope
+  scope :published, ->{ where(published: true) }
+  scope :unpublished, ->{ where(published: false) }
   ## Associations
   belongs_to :user
   has_many :steps, dependent: :destroy

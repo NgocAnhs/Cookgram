@@ -6,6 +6,10 @@ ActiveAdmin.register Recipe do
                 ingredients_attributes: [:id, :name, :_destroy],
                 steps_attributes: [:id, :content, {step_images: []}, :_destroy]
   
+  scope :all
+  scope :published
+  scope :unpublished
+  
   controller do
     defaults :finder => :find_by_slug
   end
