@@ -2,20 +2,47 @@ ActiveAdmin.register Recipe do
   permit_params :user_id,
                 :title,
                 :image,
+                :published,
                 ingredients_attributes: [:id, :name, :_destroy],
                 steps_attributes: [:id, :content, {step_images: []}, :_destroy]
+  
+  scope :all
+  scope :published
+  scope :unpublished
   
   controller do
     defaults :finder => :find_by_slug
   end
   
+  action_item :publish, only: :show do
+    link_to "Publish", publish_admin_recipe_path(recipe), method: :put unless recipe.published
+  end
+  
+  action_item :unpublish, only: :show do
+    link_to "Unpublish", unpublish_admin_recipe_path(recipe), method: :put if recipe.published
+  end
+
+  member_action :publish, method: :put do
+    recipe = Recipe.find_by_slug(params[:id])
+    recipe.update(published: true)
+    redirect_to admin_recipe_path(recipe)
+  end
+
+  member_action :unpublish, method: :put do
+    recipe = Recipe.find_by_slug(params[:id])
+    recipe.update(published: false)
+    redirect_to admin_recipe_path(recipe)
+  end
+
   filter :user
   filter :title
+  filter :published
   filter :created_at
 
   index do
     selectable_column
     id_column
+    column :published
     column :user_id
     column :title
     column :image do |img|
@@ -28,6 +55,7 @@ ActiveAdmin.register Recipe do
   show do
     attributes_table do
       row :title
+      row :published
       row :image do |img|
         image_tag url_for(img.image), height: '80'
       end
@@ -57,6 +85,7 @@ ActiveAdmin.register Recipe do
       f.input :user_id, as: :select, :collection => User.all
       f.input :title
       f.input :image, as: :file
+      f.input :published, :label => "Publish"
     end
     f.inputs do
       f.has_many :ingredients, heading: 'Ingredient',

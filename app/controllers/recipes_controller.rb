@@ -4,9 +4,13 @@ class RecipesController < ApplicationController
   before_action :process_image, only: [:create]
 
   def show
-    # save log recipe was viewd by current user
-    exist = ViewedRecipe.find_by(user_id: current_user.id, recipe_id: @recipe.id).present?
-    ViewedRecipe.create(user_id: current_user.id, recipe_id: @recipe.id) unless exist
+    if current_user == @recipe.user || @recipe.published
+      # save log recipe was viewd by current user
+      exist = ViewedRecipe.find_by(user_id: current_user.id, recipe_id: @recipe.id).present?
+      ViewedRecipe.create(user_id: current_user.id, recipe_id: @recipe.id) unless exist
+    else
+      redirect_to root_path
+    end
   end
   
   def new
