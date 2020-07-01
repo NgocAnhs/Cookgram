@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'notifications/index'
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
-    # ActiveAdmin.routes(self)
+    ActiveAdmin.routes(self)
     root to: 'home#index'
     post '/rate' => 'rater#create', :as => 'rate'
     devise_for :users, controllers: { registrations: 'registrations', passwords: 'passwords' }, skip: :omniauth_callbacks
