@@ -21,6 +21,7 @@ class RecipesController < ApplicationController
   
   def create
     @recipe = current_user.recipes.new(recipe_params)
+    @recipe.published = current_user.trusted
     if @recipe.save
       current_user.followers.each do |follower|
         Notification.create(user_id: follower.id, actor_id: current_user.id, action: "posted", notifiable: @recipe)
@@ -70,7 +71,7 @@ class RecipesController < ApplicationController
       steps_attributes: [:id, :content, {step_images: []}, :_destroy])
   end
 
-  def optimized_image img
+  def optimized_image(img)
     return unless img
     image = MiniMagick::Image.new(img.tempfile.path)
     image.strip
