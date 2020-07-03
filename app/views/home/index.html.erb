@@ -1,5 +1,5 @@
 <%= render 'home/banner' %>
-<% if user_signed_in? && @recommend_recipes.size > 0 %>
+<% if user_signed_in? && @recommend_recipes.any? %>
   <div class="master-chef my-5">
     <h3 class="base-color-text ml-3 mb-3 font-weight-bold">CÓ THỂ BẠN SẼ THÍCH</h3>
     <div class="row mx-5">
