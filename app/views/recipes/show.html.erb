@@ -2,7 +2,10 @@
   <div class="main-image text-center">
     <%= image_tag @recipe.image, class: "large-img base-border-rounded" %>
   </div>
-  <h4 class="base-color-text text-center mt-3"><%= @recipe.title %></h4>
+  <div class="mx-auto" style="width:fit-content">
+    <h4 class="base-color-text text-center mt-3 d-inline"><%= @recipe.title %></h4>
+    <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_recipe_path(@recipe), class: "btn" if current_user == @recipe.user %>
+  </div>
   <div class="user text-center">
     <a href="<%= user_path(@recipe.user) %>" style="color: orangered; font-weight: bold"><i class="fas fa-user"></i>  <%= @recipe.user.full_name %></a>
   </div>
@@ -34,8 +37,8 @@
     <% end %>
   </div>
   <div class="horizontal-line"></div>
-  <div id="comments" class="my-3">
-    <div class="col-lg-7">
+  <div id="comments" class="my-3 row">
+    <div class="col-md-6">
       <h4>Bình luận:</h4>
       <div class="comment-input-area d-flex">
         <div class="small-img">
@@ -51,6 +54,33 @@
         <%= render "comments/comment_list", recipe: @recipe %>
       </div>
       <%= render 'layouts/modal_confirm' %>
+    </div>
+    <div class="col-md-6">
+      <div class="d-flex">
+        <%= image_tag @recipe.user.avatar_size(:small), size: "50x50", class: "rounded-circle base-border-color" %>
+        <h4 class="d-inline mx-2 font-weight-bold" style="color: orangered"><%= @recipe.user.full_name %></h4>
+        <% if current_user&.following?(@recipe.user) %>
+          <%= render 'relationships/unfollow', user: @recipe.user %>
+        <% else %>
+          <%= render 'relationships/follow', user: @recipe.user %>
+        <% end %>
+      </div>
+      <br>
+      <h6>Bạn có thích món ăn này?</h6>
+      <ul class="list-group list-group-horizontal-sm mx-auto" style="width: fit-content">        
+        <li class="list-group-item mx-3 bg-danger" id="recipe-like-link-<%= @recipe.id.to_s %>">
+          <%= render "likes/recipe/like_link", object: @recipe %>
+        </li>
+        <li class="list-group-item mx-3 bg-success" id="recipe-bookmark-link-<%= @recipe.id.to_s %>" style="border-left-width: 1px">
+          <%= render "bookmarks/bookmark", object: @recipe %>
+        </li>
+        <li class="list-group-item mx-3 bg-warning" id="recipe-share" style="border-left-width: 1px">
+          <% fb_share_url = "https://www.facebook.com/sharer/sharer.php?app_id="+ENV['FACEBOOK_APP_ID']+"&sdk=joey&u=" %>
+          <a href="<%= fb_share_url + recipe_url(@recipe) %>" onclick="return !window.open(this.href, 'Facebook', 'width=640,height=580')"><i class="fas fa-share-alt fa-lg"></i></a>
+        </li>
+      </ul>
+      <hr>
+      <h6>Có thể bạn sẽ thích?</h6>
     </div>
   </div>
 </div>

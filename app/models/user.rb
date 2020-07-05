@@ -101,7 +101,7 @@ class User < ApplicationRecord
     if avatar.attached?
       avatar.variant(sizes[size]).processed
     else
-      'default_avatar.jpg'
+      "default_avatar.jpg"
     end
   end
 
