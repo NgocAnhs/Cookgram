@@ -1,10 +1,8 @@
 <% fb_share_url = "https://www.facebook.com/sharer/sharer.php?app_id="+ENV['FACEBOOK_APP_ID']+"&sdk=joey&u=" %>
 
 <div class="box-item col-lg-3 col-md-4 col-sm-6">
-  <% if current_user == recipe.user %>
-    <%= link_to "<i class='fas fa-times'></i>".html_safe, '#modalConfirm', class: "setting", 
-    data: {toggle: 'modal', target: '#modalConfirm', whatever: recipe_path(recipe) } %>
-  <% end %>
+  <%= link_to "<i class='fas fa-times'></i>".html_safe, '#modalConfirm', class: "setting", 
+    data: {toggle: 'modal', target: '#modalConfirm', whatever: recipe_path(recipe) } if current_user == recipe.user %>
   <div class="box-img">
     <%= link_to recipe_path(recipe) do %>
       <%= image_tag recipe.image %>

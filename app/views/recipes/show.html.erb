@@ -2,10 +2,15 @@
   <div class="main-image text-center">
     <%= image_tag @recipe.image, class: "large-img base-border-rounded" %>
   </div>
-  <div class="mx-auto" style="width:fit-content">
-    <h4 class="base-color-text text-center mt-3 d-inline"><%= @recipe.title %></h4>
-    <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_recipe_path(@recipe), class: "btn" if current_user == @recipe.user %>
-  </div>
+  <h4 class="base-color-text text-center mt-3">
+    <%= @recipe.title %> 
+    <% if current_user == @recipe.user %>
+      <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_recipe_path(@recipe), class: "text-warning" %>
+      <%= link_to '<i class="fas fa-minus-circle"></i>'.html_safe, '#modalConfirm', class: "text-danger",
+      data: {toggle: 'modal', target: '#modalConfirm', whatever: recipe_path(@recipe) } %>
+    <% end %>
+  </h4>
+    
   <div class="user text-center">
     <a href="<%= user_path(@recipe.user) %>" style="color: orangered; font-weight: bold"><i class="fas fa-user"></i>  <%= @recipe.user.full_name %></a>
   </div>
@@ -53,7 +58,6 @@
       <div id="comment-list-area" class="mt-2">
         <%= render "comments/comment_list", recipe: @recipe %>
       </div>
-      <%= render 'layouts/modal_confirm' %>
     </div>
     <div class="col-md-6">
       <div class="d-flex">
@@ -84,3 +88,5 @@
     </div>
   </div>
 </div>
+
+<%= render 'layouts/modal_confirm' %>
