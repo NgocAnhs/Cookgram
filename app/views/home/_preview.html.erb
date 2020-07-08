@@ -6,7 +6,7 @@
       <%= image_tag recipe.image, class:"mw-100 base-border-rounded" %>
     </div>
     <div class="recipe-info my-2">
-    <%= rating_for recipe, "quality", disable_after_rate: true, imdb_avg: true %>
+      <%= rating_for @recipe, "quality", star: 5, enable_half: true %>
       <h5><i class="fas fa-heart"></i>&nbsp;<%= recipe.likes.size %></h5>
       <h5><i class="fas fa-comments"></i>&nbsp;<%= recipe.comments.size %></h5>
       <h5>

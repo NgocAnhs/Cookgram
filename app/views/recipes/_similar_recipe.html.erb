@@ -1,0 +1,6 @@
+<% recipe = Recipe.find_by_id(item.id) %>
+<div class="d-inline-block mx-1">
+  <%= image_tag recipe.image, size: '170x125', class: 'base-border-rounded' %>
+  <br>
+  <div style="width:170px" class="mb-2 text-center"><%= link_to truncate(recipe.title, :length => 20), recipe, title: recipe.title, class: 'font-weight-bold text-decoration-none text-success' %></div>
+</div>

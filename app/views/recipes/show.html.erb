@@ -84,7 +84,8 @@
         </li>
       </ul>
       <hr>
-      <h6>Có thể bạn sẽ thích?</h6>
+      <%= "<h6>Món liên quan</h6>".html_safe if @similar_recipes.any? %>
+      <%= render partial: "recipes/similar_recipe", collection: @similar_recipes, as: :item %>
     </div>
   </div>
 </div>
