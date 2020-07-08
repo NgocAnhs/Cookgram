@@ -16,18 +16,30 @@
   <div id="profile-body">
     <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" id="myRecipe-tab" data-toggle="tab" href="#myRecipe" role="tab" aria-controls="myRecipe" aria-selected="true">Bếp Của Tôi (<%= @my_recipes.size %>)</a>
+      <a class="nav-link active" id="myRecipe-tab" data-toggle="tab" href="#myRecipe" role="tab" aria-controls="myRecipe" aria-selected="true">
+        Bếp Của Tôi
+        <span class="badge badge-success"><%= @my_recipes.size %></span>
+      </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="followers-tab" data-toggle="tab" href="#followers" role="tab" aria-controls="followers" aria-selected="false">Người Theo Dõi (<%= @followers.size %>)</a>
+      <a class="nav-link" id="followers-tab" data-toggle="tab" href="#followers" role="tab" aria-controls="followers" aria-selected="false">
+        Người Theo Dõi
+        <span class="badge badge-success"><%= @followers.size %></span>
+      </a>
     </li>
     <% if current_user == @user %>
       <li class="nav-item">
-        <a class="nav-link" id="following-tab" data-toggle="tab" href="#following" role="tab" aria-controls="following" aria-selected="false">Người Đang Theo Dõi (<%= @following.size %>)</a>
+        <a class="nav-link" id="following-tab" data-toggle="tab" href="#following" role="tab" aria-controls="following" aria-selected="false">
+          Người Đang Theo Dõi
+          <span class="badge badge-success"><%= @following.size %></span>
+        </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" id="bookmarks-tab" data-toggle="tab" href="#bookmarks" role="tab" aria-controls="bookmarks" aria-selected="false">Bookmarks (<%= @bookmarks.size %>)</a>
+        <a class="nav-link" id="bookmarks-tab" data-toggle="tab" href="#bookmarks" role="tab" aria-controls="bookmarks" aria-selected="false">
+          Bookmarks
+          <span class="badge badge-success"><%= @bookmarks.size %></span>
+        </a>
       </li>
     <% end %>
     <li class="nav-item">
