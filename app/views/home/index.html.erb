@@ -25,12 +25,12 @@
 <div class="tab-content" id="pills-tabContent">
   <div class="tab-pane fade show active" id="pills-latest" role="tabpanel" aria-labelledby="pills-latest-tab">
     <% unless @latest_recipes.empty? %>
-      <div class="row mx-5">
-        <% @latest_recipes.each do |recipe| %>
-          <%= render 'home/box_item', recipe: recipe %>
-        <% end %>
+      <div class="row mx-5" id="latest_recipes">
+        <%= render "page_items" %>
       </div>
-      <%== pagy_bootstrap_nav (@pagy_latest) if @pagy_latest.pages > 1 %>
+      <div id="div_next_link" class="text-center">
+        <%= render partial: 'next_link' %>
+      </div>
     <% else %>
       <h5 class="text-center my-3">Xin lỗi! Chúng tôi không tìm thấy công thức nào</h5>
     <% end %>

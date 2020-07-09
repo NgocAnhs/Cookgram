@@ -43,6 +43,7 @@ en:
   or: "Or"
   create_recipe: "Create your recipe"
   login_with: "Login with "
+  more: "See more..."
   controllers:
     recipes:
       create_success: "Recipe successfully created"

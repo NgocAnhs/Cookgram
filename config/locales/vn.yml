@@ -11,6 +11,7 @@ vn:
   or: "Hoặc"
   create_recipe: "Tạo công thức mới"
   login_with: "Đăng nhập với "
+  more: "Xem Thêm..."
   controllers:
     recipes:
       create_success: "Công thức đã được đăng thành công"
