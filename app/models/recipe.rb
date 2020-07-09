@@ -46,6 +46,7 @@ class Recipe < ApplicationRecord
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'false' do
       indexes :title, analyzer: 'english', index_options: 'offsets'
+      indexes :published
       indexes :ingredients do
         indexes :name, analyzer: 'english'
       end
@@ -62,11 +63,24 @@ class Recipe < ApplicationRecord
     __elasticsearch__.search(
       {
         query: {
-          multi_match: {
-            query: query,
-            fields: ['title', 'ingredients.name']
+          bool: {
+            must: {
+              multi_match: {
+                query: query,
+                fields: ['title^5', 'ingredients.name']
+              }
+            },
+            filter: {
+              term: { published: true }
+            }
           }
         }
+        # query: {
+        #   multi_match: {
+        #     query: query,
+        #     fields: ['title^5', 'ingredients.name']
+        #   }
+        # }
       }
     )
   end
