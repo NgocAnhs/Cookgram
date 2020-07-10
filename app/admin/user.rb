@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params :email, :fname, :lname, :password, :password_confirmation, :admin
+  permit_params :email, :fname, :lname, :password, :password_confirmation, :trusted, :admin
 
   index do
     selectable_column
@@ -10,10 +10,13 @@ ActiveAdmin.register User do
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
+    column :trusted
+    column :admin
     actions
   end
 
   filter :email
+  filter :trusted
   filter :sign_in_count
   filter :created_at
 
@@ -24,6 +27,7 @@ ActiveAdmin.register User do
       f.input :lname
       f.input :password
       f.input :password_confirmation
+      f.input :trusted, :label => "Trusted"
       f.input :admin, :label => "Administrator"
     end
     f.actions
