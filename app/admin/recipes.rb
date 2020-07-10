@@ -46,7 +46,7 @@ ActiveAdmin.register Recipe do
     column :user_id
     column :title
     column :image do |img|
-      image_tag url_for(img.image), height: '50'
+      image_tag url_for(img.image), height: '50' unless img.image.attachment.nil?
     end
     column :created_at
     actions
@@ -57,7 +57,7 @@ ActiveAdmin.register Recipe do
       row :title
       row :published
       row :image do |img|
-        image_tag url_for(img.image), height: '80'
+        image_tag url_for(img.image), height: '80' unless img.image.attachment.nil?
       end
       panel "Ingredients" do
         table_for recipe.ingredients do
