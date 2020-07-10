@@ -26,6 +26,7 @@ class Recipe < ApplicationRecord
   friendly_id :title, use: :slugged
   ## Validates
   validates :title, length: { in: 5..40 }
+  validates :image, presence: true
   validates_presence_of :ingredients, :steps
   validates_associated :ingredients, :steps
   ##
