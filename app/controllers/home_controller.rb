@@ -3,7 +3,7 @@ class HomeController < ApplicationController
     @pagy_latest, @latest_recipes = pagy_countless(Recipe.all.published.includes(:user, :likes, :comments).order("created_at desc"), page_param: :page_latest, params: { active_tab: 'lates' }, link_extra: 'data-remote="true"')
     @master_chefs = find_master_chefs
     if user_signed_in?
-      @recommend_recipes = current_user.recommend_recipes.collect { |val| val[0].recipe if val[0].recipe.published }.compact.uniq.shuffle.take(4)
+      @recommend_recipes = current_user.recommend_recipes.collect { |val| val[0].recipe if val[0].recipe.published }.compact.uniq.take(4)
       @pagy_care, @care_recipes = pagy_array(current_user.following_and_own_recipes, page_param: :page_care, params: { active_tab: 'care' }) ## temp
     end
   end
