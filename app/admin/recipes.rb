@@ -42,7 +42,9 @@ ActiveAdmin.register Recipe do
   index do
     selectable_column
     id_column
-    column :published
+    # column :published
+    column('Published?') { |b| b.published? ? status_tag("Published", class: 'published') : status_tag("Pending", class: 'error') }
+    
     column :user_id
     column :title
     column :image do |img|
@@ -70,7 +72,7 @@ ActiveAdmin.register Recipe do
           column :step_images do |step|
             step.step_images.each do |img|
               span do 
-                image_tag img, height: '70'
+                image_tag img, height: '70' unless img.nil?
               end
             end
           end

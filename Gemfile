@@ -67,6 +67,7 @@ gem 'activeadmin'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'bonsai-elasticsearch-rails'
+gem "chartkick"
 ##
 
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?

@@ -186,7 +186,9 @@ ActiveAdmin.setup do |config|
   # tag. You can reset the hash of meta tags included in logged out
   # pages:
   #   config.meta_tags_for_logged_out_pages = {}
-
+  meta_tags_options = { viewport: 'width=device-width, initial-scale=1' }
+  config.meta_tags = meta_tags_options
+  config.meta_tags_for_logged_out_pages = meta_tags_options
   # == Removing Breadcrumbs
   #
   # Breadcrumbs are enabled by default. You can customize them for individual
