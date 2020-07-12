@@ -38,10 +38,13 @@ $(document).on('turbolinks:load', function(){
         var items;
         var unread_count = 0;
         items = $.map(data, function(notification) {
-          if (!notification.read)
-            unread_count++;
+          if (!notification.read) unread_count++;
 
-          return `<a class='dropdown-item' href='${notification.url}'><strong>${notification.actor}</strong> ${notification.action} your ${notification.notifiable_type.toLowerCase()}: <i>${notification.content}</i></a><hr style='margin:0'>`;
+          return `<a class='dropdown-item d-flex' href='${notification.url}'>
+          <img alt="Qries" src="${notification.image_url}" class="square-small-img mr-2 my-auto">
+          <div><strong>${notification.actor}</strong> ${notification.action} ${notification.notifiable_type.toLowerCase()}: <br/><i>${notification.content}</i> <br/>
+          <small class="text-muted">${notification.created_at}</small></div></a>
+          <hr style='margin:0'>`;
         });
         if (unread_count > 0)
           $("[data-behavior='unread-count']").removeClass('d-none').text(unread_count);
