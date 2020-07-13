@@ -19,9 +19,7 @@
   <div class="ml-auto">
     <ul class="navbar-nav flex-row">
       <li class="nav-item mx-2 my-auto">
-        <%= link_to_unless I18n.locale == :en, 'EN', locale: :en %>
-        |
-        <%= link_to_unless I18n.locale == :vn, "VN", locale: :vn %>
+        <%= render 'layouts/locale' %>
       </li>
       <!-- Check loged in to render navbar -->
       <% if user_signed_in? %>

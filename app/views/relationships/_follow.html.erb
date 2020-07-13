@@ -1,3 +1,3 @@
 <div id="follow">
-  <%= link_to 'Theo dõi', relationships_path(id: user.id), method: :post, remote: user_signed_in?, class: 'btn btn-positive' %>
+  <%= link_to t('follow'), relationships_path(id: user.id), method: :post, remote: user_signed_in?, class: 'btn btn-positive' %>
 </div>

@@ -44,7 +44,8 @@ en:
   or: "Or"
   create_recipe: "Create your recipe"
   login_with: "Login with "
-  more: "See more..."
+  see_more: "See more..."
+  see_detail: "Read this recipe in detail"
   recommend_recipes: "Recommend for you"
   latest_recipes: "Latest Recipes"
   following_recipes: "Recipes Following"
@@ -53,6 +54,10 @@ en:
   steps: "Steps"
   step: "Step %{count}"
   comments: "Comments"
+  rating: 
+    zero: "%{count} rating"
+    one: "%{count} rating"
+    other: "%{count} ratings"
   reply:
     zero: "%{count} reply"
     one: "%{count} reply"
@@ -60,6 +65,17 @@ en:
   like: "Like"
   unlike: "Unlike"
   delete: "Detete"
+  follow: "Follow"
+  unfollow: "Unfollow"
+  following: "Following"
+  followers: "Followers"
+  follower:
+    zero: "%{count} follower"
+    one: "%{count} follower"
+    other: "%{count} followers"
+  my_recipes: "My Recipes"
+  about_me: "About Me"
+  setting: "Setting"
   controllers:
     recipes:
       create_success: "Recipe successfully created"

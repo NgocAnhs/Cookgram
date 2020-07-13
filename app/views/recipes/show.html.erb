@@ -18,7 +18,7 @@
     <div class="d-inline-block">
       <%= rating_for @recipe, "quality", star: 5, enable_half: true %>
     </div>
-    <div style="vertical-align:bottom"><%= @recipe.rates("quality").size %> đánh giá</div>
+    <div style="vertical-align:bottom"><%= t('rating', count: @recipe.rates("quality").size) %></div>
     
   </div>
   <div id="ingredients" class="mt-3">

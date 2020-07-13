@@ -5,7 +5,7 @@
     <div class="info-user">
       <h4><%= @user.full_name %></h4>
       <% if current_user == @user %>
-        <%= link_to 'Cập Nhật', edit_user_registration_path, class: "btn btn-positive" %>
+        <%= link_to t('setting'), edit_user_registration_path, class: "btn btn-positive" %>
       <% elsif current_user&.following?(@user) %>
         <%= render 'relationships/unfollow', user: @user %>
       <% else %>
@@ -17,20 +17,20 @@
     <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
     <li class="nav-item">
       <a class="nav-link active" id="myRecipe-tab" data-toggle="tab" href="#myRecipe" role="tab" aria-controls="myRecipe" aria-selected="true">
-        Bếp Của Tôi
+        <%= t('my_recipes') %>
         <span class="badge badge-success"><%= @my_recipes.size %></span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" id="followers-tab" data-toggle="tab" href="#followers" role="tab" aria-controls="followers" aria-selected="false">
-        Người Theo Dõi
+        <%= t('followers') %>
         <span class="badge badge-success"><%= @followers.size %></span>
       </a>
     </li>
     <% if current_user == @user %>
       <li class="nav-item">
         <a class="nav-link" id="following-tab" data-toggle="tab" href="#following" role="tab" aria-controls="following" aria-selected="false">
-          Người Đang Theo Dõi
+          <%= t('following') %>
           <span class="badge badge-success"><%= @following.size %></span>
         </a>
       </li>
@@ -43,7 +43,8 @@
       </li>
     <% end %>
     <li class="nav-item">
-      <a class="nav-link" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="false">Giới Thiệu</a>
+      <a class="nav-link" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="false">
+      <%= t('about_me') %></a>
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">

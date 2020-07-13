@@ -4,5 +4,5 @@
   <% end %>
   <br>
   <%= link_to user.full_name, user_path(user), class: "font-weight-bold text-decoration-none" %> <br>
-  <i><%= user.followers.size %> followers</i>
+  <i><%= t('follower', count: user.followers.size) %></i>
 </div>
