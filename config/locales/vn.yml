@@ -4,6 +4,7 @@ vn:
   signup: "Đăng Ký"
   search: "Tìm thử nhé!"
   input_search: "Hôm nay bạn muốn ăn gì nè!"
+  input_comment: "Bạn nghĩ gì về món ăn này?"
   policy_confirm: "Tôi đã đọc và đồng ý với điều khoản của website."
   have_account: "Bạn đã có tài khoản?"
   no_account: "Bạn chưa có tài khoản?"
@@ -12,6 +13,20 @@ vn:
   create_recipe: "Tạo công thức mới"
   login_with: "Đăng nhập với "
   more: "Xem Thêm..."
+  recommend_recipes: "Có thể bạn sẽ thích"
+  latest_recipes: "Công thức mới nhất"
+  following_recipes: "Công thức quan tâm"
+  chefs_favorite: "Bếp yêu thích"
+  ingredients: "Nguyên Liệu:"
+  steps: "Cách làm:"
+  step: "Bước %{count}"
+  comments: "Bình Luận"
+  reply:
+    one: "%{count} trả lời"
+    other: "%{count} trả lời"
+  like: "Thích"
+  unlike: "Bỏ Thích"
+  delete: "Xoá"
   controllers:
     recipes:
       create_success: "Công thức đã được đăng thành công"

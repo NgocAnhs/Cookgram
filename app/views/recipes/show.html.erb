@@ -22,17 +22,17 @@
     
   </div>
   <div id="ingredients" class="mt-3">
-    <h4>Nguyên liệu:</h4>
+    <h4><%= t('ingredients') %></h4>
     <div class="horizontal-line"></div>
     <% @recipe.ingredients.each.with_index do |ingredient, index| %>
       <p class="ml-2"><%= "#{index + 1}. #{ingredient.name}" %></p>
     <% end %>
   </div>
   <div id="steps" class="my-3">
-    <h4>Cách làm:</h4>
+    <h4><%= t('steps') %></h4>
     <div class="horizontal-line"></div>
     <% @recipe.steps.each.with_index do |step, index| %>
-      <h5 class="ml-2">Bước <%= index + 1 %></h5>
+      <h5 class="ml-2"><%= t('step', count: index + 1) %></h5>
       <p class="ml-2"><%= step.content %></p>
         <div class="d-flex justify-content-center">
           <% step.step_images&.each do |img| %>
@@ -44,7 +44,7 @@
   <div class="horizontal-line"></div>
   <div id="comments" class="my-3 row">
     <div class="col-md-6">
-      <h4>Bình luận:</h4>
+      <h4><%= t('comments') %></h4>
       <div class="comment-input-area d-flex">
         <div class="small-img">
           <%= image_tag current_user.avatar_size(:small), alt: "Cookgram", class: "small-img" %>
@@ -54,7 +54,7 @@
         </div>
       </div>
       <hr>
-      <span id="comment-size" class="font-weight-bold"><%= @recipe.comments.size %> trả lời</span>
+      <span id="comment-size" class="font-weight-bold"><%= t('reply', count: @recipe.comments.size) %></span>
       <div id="comment-list-area" class="mt-2">
         <%= render "comments/comment_list", recipe: @recipe %>
       </div>

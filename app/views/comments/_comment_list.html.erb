@@ -15,7 +15,7 @@
           <%= render "likes/comment/like_link", object: cmt %>
         </span>
         <% if current_user == cmt.user %>
-        | <%= link_to "Xóa", '#modalConfirm', data: {toggle: 'modal', target: '#modalConfirm', whatever: comment_path(cmt)} %>
+        | <%= link_to t('delete'), '#modalConfirm', data: {toggle: 'modal', target: '#modalConfirm', whatever: comment_path(cmt)} %>
         <% end %>
       </small>
     </div>

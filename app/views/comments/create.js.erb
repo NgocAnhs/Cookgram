@@ -1,4 +1,4 @@
-$('#comment-size').html('<%= @recipe.comments.size %> trả lời');
+$('#comment-size').html('<%= t('reply', count: @recipe.comments.size) %>');
 $('#comment-list-area').html('<%= j render "comments/comment_list", recipe: @recipe %>')
 $('#comment_content').val('')
 console.log('Comment create successfully')

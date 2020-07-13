@@ -1,5 +1,5 @@
 <% if user_signed_in? && object.is_liked(current_user).present? %>
-  <%= link_to "Bỏ Like", comment_like_path(object, object.is_liked(current_user)), method: :delete, remote: true %>
+  <%= link_to t('unlike'), comment_like_path(object, object.is_liked(current_user)), method: :delete, remote: true %>
 <% else %>
-  <%= link_to "Like", comment_likes_path(object), method: :post, remote: true %>
+  <%= link_to t('like'), comment_likes_path(object), method: :post, remote: true %>
 <% end %>
