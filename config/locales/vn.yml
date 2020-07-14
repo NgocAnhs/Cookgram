@@ -5,6 +5,8 @@ vn:
   search: "Tìm thử nhé!"
   input_search: "Hôm nay bạn muốn ăn gì nè!"
   input_comment: "Bạn nghĩ gì về món ăn này?"
+  do_you_love_it: "Bạn có thích món ăn này?"
+  relative_dishes: "Món liên quan"
   policy_confirm: "Tôi đã đọc và đồng ý với điều khoản của website."
   have_account: "Bạn đã có tài khoản?"
   no_account: "Bạn chưa có tài khoản?"
@@ -35,6 +37,13 @@ vn:
   my_recipes: "Bếp Của Tôi"
   about_me: "Giới Thiệu"
   setting: "Cập Nhật"
+  confirm_delete_title: "Xác Nhận Xóa"
+  confirm_delete_body: "Bạn có chắc chắn muốn xóa không?"
+  edit_register: "Chỉnh sửa thông tin"
+  change_password: "Đổi mật khẩu"
+  delete_account: "Xóa tài khoản"
+  choose_photo: "Chọn hình ảnh"
+  save_it: "Lưu thông tin"
   controllers:
     recipes:
       create_success: "Công thức đã được đăng thành công"

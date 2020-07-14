@@ -15,6 +15,11 @@
         <% unless object.published %>
           <button type="button" class="btn btn-danger btn-sm" disabled>Pending</button>
         <% end %>
+        <% if current_user == object.user %>
+          <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_recipe_path(object), class: "text-warning" %>
+          <%= link_to '<i class="fas fa-minus-circle"></i>'.html_safe, '#modalConfirm', class: "text-danger",
+          data: {toggle: 'modal', target: '#modalConfirm', whatever: recipe_path(object) } %>
+        <% end %>
       </div>
     </div>
   </div>

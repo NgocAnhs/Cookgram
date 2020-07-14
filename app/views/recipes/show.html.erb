@@ -70,7 +70,7 @@
         <% end %>
       </div>
       <br>
-      <h6>Bạn có thích món ăn này?</h6>
+      <h6><%= t('do_you_love_it') %></h6>
       <ul class="list-group list-group-horizontal-sm mx-auto" style="width: fit-content">        
         <li class="list-group-item mx-3 bg-danger" id="recipe-like-link-<%= @recipe.id.to_s %>">
           <%= render "likes/recipe/like_link", object: @recipe %>
@@ -84,7 +84,7 @@
         </li>
       </ul>
       <hr>
-      <%= "<h6>Món liên quan</h6>".html_safe if @similar_recipes.any? %>
+      <%= "<h6>#{t('relative_dishes')}</h6>".html_safe if @similar_recipes.any? %>
       <%= render partial: "recipes/similar_recipe", collection: @similar_recipes, as: :item %>
     </div>
   </div>

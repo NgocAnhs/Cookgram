@@ -1,13 +1,12 @@
 <%= render 'layouts/navbar' %>
 <div class="col-md-9 col-sm-12 mx-auto row">
-  <div class="col-md-3 text-center">
+  <div class="col-md-4 text-center" style="border-right: 2px solid green">
     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-      <a class="nav-link active" id="v-pills-edit-profile-tab" data-toggle="pill" href="#v-pills-edit-profile" role="tab" aria-controls="v-pills-edit-profile" aria-selected="true">Chỉnh sửa thông tin</a>
-      <a class="nav-link" id="v-pills-edit-password-tab" data-toggle="pill" href="#v-pills-edit-password" role="tab" aria-controls="v-pills-edit-password" aria-selected="false">Đổi mật khẩu</a>
-      <%= link_to "Xóa tài khoản", '#modalConfirm', data: {toggle: 'modal', target: '#modalConfirm', whatever: registration_path(resource_name)}, class: "btn text-decoration-none text-danger font-weight-bold" %>
+      <a class="nav-link active" id="v-pills-edit-profile-tab" data-toggle="pill" href="#v-pills-edit-profile" role="tab" aria-controls="v-pills-edit-profile" aria-selected="true"><%= t('edit_register') %></a>
+      <a class="nav-link" id="v-pills-edit-password-tab" data-toggle="pill" href="#v-pills-edit-password" role="tab" aria-controls="v-pills-edit-password" aria-selected="false"><%= t('change_password') %></a>
+      <%= link_to t('delete_account'), '#modalConfirm', data: {toggle: 'modal', target: '#modalConfirm', whatever: registration_path(resource_name)}, class: "btn text-decoration-none text-danger font-weight-bold" %>
     </div>
   </div>
-  <div class="vertical-line" style="height:400px"></div>
   <div class="col-md-8 col-sm-12" id="edit-info-user">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
@@ -45,14 +44,14 @@
               </div>
                     
               <div class="actions text-right">
-                <%= f.submit "Alright, save it now", class: "btn btn-outline-success font-weight-bold" %>
+                <%= f.submit t('save_it'), class: "btn btn-outline-success font-weight-bold" %>
               </div>
             </div>
             <div class="col-md-4 col-sm-12 text-center">
               <%= image_tag resource.avatar_size(:normal), class: "my-3 rounded-circle base-border-color", id: "avatar-preview", size: '150x150' %>
               <label for="user_avatar" style="height:40px;width:150px" class="text-white text-center py-2 base-border-rounded base-color-background">
                 <i class="far fa-image"></i>
-                Choose a photo
+                <%= t('choose_photo') %>
               </label>
               <%= f.file_field :avatar, class: "d-none" %>
             </div>

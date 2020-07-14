@@ -37,6 +37,8 @@ en:
   search: "Let's find it!"
   input_search: "What do you want to eat?"
   input_comment: "What do you think about this dish?"
+  do_you_love_it: "Do you love this recipe?"
+  relative_dishes: "Relative dishes"
   policy_confirm: "Agree to terms and conditions."
   have_account: "Already have an account?"
   no_account: "Don't have an account?"
@@ -76,6 +78,13 @@ en:
   my_recipes: "My Recipes"
   about_me: "About Me"
   setting: "Setting"
+  confirm_delete_title: "Delete Confirmation"
+  confirm_delete_body: "Are you sure to delete it?"
+  edit_register: "Edit Information"
+  change_password: "Change Password"
+  delete_account: "Delete Your Account"
+  choose_photo: "Choose a photo"
+  save_it: "Alright, save it now"
   controllers:
     recipes:
       create_success: "Recipe successfully created"
