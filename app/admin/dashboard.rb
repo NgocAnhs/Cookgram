@@ -17,13 +17,13 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Statistic New Users" do
           tabs do
             tab :date do
-              column_chart User.all.group_by{|x| x.created_at.to_date.to_s(:db)}.map {|k,v| [k, v.length]}.sort
+              column_chart User.all.group_by{|x| x.created_at.localtime.to_date.to_s(:db)}.map {|k,v| [k, v.length]}.sort
             end
             tab :month do
-              column_chart User.all.group_by{|x| x.created_at.beginning_of_month.strftime("%Y-%m")}.map {|k,v| [k, v.length]}.sort
+              column_chart User.all.group_by{|x| x.created_at.localtime.beginning_of_month.strftime("%Y-%m")}.map {|k,v| [k, v.length]}.sort
             end
             tab :year do
-              column_chart User.all.group_by{|x| x.created_at.year.to_s(:db)}.map {|k,v| [k, v.length]}.sort
+              column_chart User.all.group_by{|x| x.created_at.localtime.year.to_s(:db)}.map {|k,v| [k, v.length]}.sort
             end
           end
         end
@@ -33,13 +33,13 @@ ActiveAdmin.register_page "Dashboard" do
           # pie_chart Recipe.group(:published).count.map {|k,v| [k ? "Published" : "Pending", v]}
           tabs do
             tab :date do
-              column_chart Recipe.all.group_by{|x| x.created_at.to_date.to_s(:db)}.map {|k,v| [k, v.length]}.sort
+              column_chart Recipe.all.group_by{|x| x.created_at.localtime.to_date.to_s(:db)}.map {|k,v| [k, v.length]}.sort
             end
             tab :month do
-              column_chart Recipe.all.group_by{|x| x.created_at.beginning_of_month.strftime("%Y-%m")}.map {|k,v| [k, v.length]}.sort
+              column_chart Recipe.all.group_by{|x| x.created_at.localtime.beginning_of_month.strftime("%Y-%m")}.map {|k,v| [k, v.length]}.sort
             end
             tab :year do
-              column_chart Recipe.all.group_by{|x| x.created_at.year.to_s(:db)}.map {|k,v| [k, v.length]}.sort
+              column_chart Recipe.all.group_by{|x| x.created_at.localtime.year.to_s(:db)}.map {|k,v| [k, v.length]}.sort
             end
           end
         end
@@ -48,13 +48,16 @@ ActiveAdmin.register_page "Dashboard" do
     
     columns do
       column do
-        panel "New Users Today (#{User.where(created_at: (1.day.ago..Time.zone.now)).size})" do
-          ul do
-            User.where(created_at: (1.day.ago..Time.zone.now)).order(created_at: :desc).take(10).map do |user|
-              li link_to(user.full_name, admin_user_path(user))
+        panel "New Users in 24h (#{User.where(created_at: (1.day.ago..Time.zone.now)).size})" do
+          table_for User.where(created_at: (1.day.ago..Time.zone.now)).order(created_at: :desc).take(10).map do
+            column :full_name do |user|
+              link_to(user.full_name, admin_user_path(user))
+            end
+            column :created_at do |x|
+              p x.created_at.localtime
             end
           end
-          a link_to "See more", admin_users_path
+          strong { link_to "View All Users", admin_users_path }
         end
       end
 
@@ -64,7 +67,9 @@ ActiveAdmin.register_page "Dashboard" do
             column :title do |recipe|
               link_to recipe.title, admin_recipe_path(recipe)
             end
-            column :created_at
+            column :created_at do |x|
+              p x.created_at.localtime
+            end
           end
           strong { link_to "View All Pending Recipes", admin_recipes_path }
         end

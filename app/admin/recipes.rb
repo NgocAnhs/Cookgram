@@ -50,7 +50,9 @@ ActiveAdmin.register Recipe do
     column :image do |img|
       image_tag url_for(img.image), height: '50' unless img.image.attachment.nil?
     end
-    column :created_at
+    column :created_at do |x|
+      p x.created_at.localtime
+    end
     actions
   end
 

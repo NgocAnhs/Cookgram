@@ -7,9 +7,13 @@ ActiveAdmin.register User do
     column :email
     column :fname
     column :lname
-    column :current_sign_in_at
+    column :current_sign_in_at do |x|
+      p x.created_at.localtime
+    end
     column :sign_in_count
-    column :created_at
+    column :created_at do |x|
+      p x.created_at.localtime
+    end
     column :trusted
     column :admin
     actions
